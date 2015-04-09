@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20150103172919) do
 
-  create_table "actor_films", force: true do |t|
+  create_table "actor_films", force: :cascade do |t|
     t.integer  "actor_id"
     t.integer  "film_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "actors", force: true do |t|
+  create_table "actors", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20150103172919) do
     t.string   "image_id"
   end
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.integer  "user_id"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150103172919) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "films", force: true do |t|
+  create_table "films", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150103172919) do
     t.string   "image_id"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

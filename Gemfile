@@ -1,3 +1,4 @@
+ruby '2.1.5'
 source 'https://rubygems.org'
 
 
@@ -50,3 +51,4 @@ gem 'annotate'
 
 gem "mini_magick"
 gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
+gem "aws-sdk", '< 2'
