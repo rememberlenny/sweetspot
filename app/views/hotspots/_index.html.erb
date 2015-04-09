@@ -15,11 +15,11 @@
     <% @hotspots.each do |hotspot| %>
       <% if !hotspot.nil? %>
         <tr>
-          <td><%= hotspot.films %></td>
+          <td><%= hotspot.destination %></td>
           <td><%= hotspot.location %></td>
-          <td><%= link_to 'Show', hotspot %></td>
+          <td><%= link_to 'Show', [@film, hotspot] %></td>
           <td><%= link_to 'Edit', edit_film_hotspot_path(@film, hotspot) %></td>
-          <td><%= link_to 'Destroy', hotspot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', [@film, hotspot], method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     <% end %>
