@@ -38,6 +38,7 @@ class StoriesController < ApplicationController
         image_url = attachment_url(photo, :image) + '.jpeg'
       end
       jphoto << {
+        id: photo.id,
         title: photo.title,
         description: photo.description,
         created_at: photo.created_at,
