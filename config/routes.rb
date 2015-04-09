@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :stories do
     resources :actors
-    resources :films
+    resources :films do
+      resources :hotspots
+    end
   end
 
   devise_for :users
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :films do
     resource :comments, module: :films
+    resources :hotspots
   end
 
   root to: "stories#index"
