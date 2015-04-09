@@ -43,6 +43,6 @@ class HotspotsController < ApplicationController
     end
 
     def hotspot_params
-      params.require(:hotspot).permit(:films, :location)
+      params.require(:hotspot).permit(:destination, :location)
     end
 end
