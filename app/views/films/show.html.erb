@@ -1,20 +1,19 @@
 <div class="col-sm-12">
   <%= link_to 'Edit Image', edit_film_path(@film) %> |
-  <%= link_to 'Back', films_path %>
+  <%= link_to 'Back', films_path %> |
+  <b><%= @film.title %></b>:
+  <%= @film.description %>
+  <hr>
 </div>
 
 <div class="col-sm-8">
-  <h1><%= @film.title %></h1>
-  <%= image_tag attachment_url(@film, :image, :fill, 300, 300), :class => 'image-target' %>
-  <%= simple_format @film.description %>
-
   <div>
     <label for="">Click the image to select a coordinate. </label>
     <input class="coord">
+    <br>
+    <br>
   </div>
-
-  <%= render partial: "comments/comments", locals: {commentable: @film} %>
-  <%= render partial: "comments/form", locals: {commentable: @film} %>
+  <%= image_tag attachment_url(@film, :image, :fill, 300, 300), :class => 'image-target' %>
 </div>
 
 <div class="col-sm-4">
