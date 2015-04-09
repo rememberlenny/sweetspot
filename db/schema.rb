@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409160918) do
+ActiveRecord::Schema.define(version: 20150409165319) do
 
   create_table "actor_films", force: :cascade do |t|
     t.integer  "actor_id"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20150409160918) do
   end
 
   add_index "films", ["story_id"], name: "index_films_on_story_id"
+
+  create_table "hotspots", force: :cascade do |t|
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "film_id"
+  end
+
+  add_index "hotspots", ["film_id"], name: "index_hotspots_on_film_id"
 
   create_table "stories", force: :cascade do |t|
     t.string   "name"
