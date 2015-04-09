@@ -1,9 +1,15 @@
-<h1><%= @film.title %></h1>
-<%= image_tag attachment_url(@film, :image, :fill, 300, 300) %>
-<%= simple_format @film.description %>
+<div class="col-sm-8">
+  <h1><%= @film.title %></h1>
+  <%= image_tag attachment_url(@film, :image, :fill, 300, 300) %>
+  <%= simple_format @film.description %>
 
-<%= render partial: "comments/comments", locals: {commentable: @film} %>
-<%= render partial: "comments/form", locals: {commentable: @film} %>
+  <%= render partial: "comments/comments", locals: {commentable: @film} %>
+  <%= render partial: "comments/form", locals: {commentable: @film} %>
+</div>
+<div class="col-sm-4">
+  <%= render 'hotspots/form' %>
+</div>
 
 <%= link_to 'Edit', edit_film_path(@film) %> |
 <%= link_to 'Back', films_path %>
+

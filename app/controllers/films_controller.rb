@@ -66,6 +66,7 @@ class FilmsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_film
       @film = Film.find(params[:id])
+      @hotspot = @film.hotspots.new
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

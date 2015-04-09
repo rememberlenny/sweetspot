@@ -19,4 +19,5 @@ class Film < ActiveRecord::Base
   has_many :comments, as: :commentable
   attachment :image
   belongs_to :story
+  has_many :hotspots
 end
