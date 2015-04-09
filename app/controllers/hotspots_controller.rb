@@ -33,8 +33,10 @@ class HotspotsController < ApplicationController
   end
 
   def destroy
+    @film = Film.find(params[:film_id])
+    @hotspot = @film.hotspots.find(params[:id])
     @hotspot.destroy
-    respond_with(@hotspot)
+    respond_with(@film)
   end
 
   private
