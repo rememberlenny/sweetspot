@@ -12,15 +12,44 @@ class StoriesController < ApplicationController
     respond_with(@stories)
   end
 
-  def show_json story
-    @story = story
-    return @story
+  def show_json story_id
+    story = Story.find(story_id)
+    photos = story.films.all
+    jphoto = []
+
+    photos.each do |photo|
+      jhotspots = []
+      hotspots = photo.hotspots.all
+      hotspots.each do |hotspot|
+        jhotspots << hotspot
+      end
+      jphoto << {
+        title: photo.title,
+        description: photo.description,
+        created_at: photo.created_at,
+        updated_at: photo.updated_at,
+        sweetspots: jhotspots,
+        image_url: photo,
+      }
+    end
+
+    json = {
+      story: {
+        name: story.name,
+        created_at: story.created_at,
+        updated_at: story.updated_at,
+        blurb: story.blurb,
+        byline: story.byline,
+      },
+      photos: jphoto
+    }
+    return json
   end
 
   def show
     respond_to do |format|
       format.html
-      format.json { render json: show_json(@story) }
+      format.json { render json: show_json(@story.id) }
     end
     @film = @story.films.new
   end
