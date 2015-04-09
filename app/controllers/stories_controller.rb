@@ -3,6 +3,10 @@ class StoriesController < ApplicationController
 
   respond_to :html
 
+  def path
+
+  end
+
   def index
     @stories = Story.all
     respond_with(@stories)
