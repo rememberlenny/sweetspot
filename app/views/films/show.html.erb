@@ -11,7 +11,32 @@
   <%= render partial: "comments/comments", locals: {commentable: @film} %>
   <%= render partial: "comments/form", locals: {commentable: @film} %>
 </div>
+
 <div class="col-sm-4">
   <%= render 'hotspots/form' %>
   <%= render 'hotspots/index' %>
 </div>
+
+<script>
+  var hoverReady = true;
+
+  $('img').on('mousemove', function(event){
+    reportCoordinates(event, this);
+  });
+
+  $('img').on('click', function(event){
+    if($('img').hasClass('hoverReady')){
+      $('img').removeClass('hoverReady');
+    } else {
+      $('img').addClass('hoverReady');
+    }
+  });
+
+  function reportCoordinates(event, tthis){
+    if(!$('img').hasClass('hoverReady')){
+      var left = event.pageX - $(tthis).offset().left;
+      var top = event.pageY - $(tthis).offset().top;
+      console.log (left, top);
+    }
+  }
+</script>
