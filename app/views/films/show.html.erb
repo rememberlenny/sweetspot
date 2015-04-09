@@ -1,3 +1,8 @@
+<div class="col-sm-12">
+  <%= link_to 'Edit Image', edit_film_path(@film) %> |
+  <%= link_to 'Back', films_path %>
+</div>
+
 <div class="col-sm-8">
   <h1><%= @film.title %></h1>
   <%= image_tag attachment_url(@film, :image, :fill, 300, 300) %>
@@ -8,8 +13,5 @@
 </div>
 <div class="col-sm-4">
   <%= render 'hotspots/form' %>
+  <%= render 'hotspots/index' %>
 </div>
-
-<%= link_to 'Edit', edit_film_path(@film) %> |
-<%= link_to 'Back', films_path %>
-

@@ -67,6 +67,7 @@ class FilmsController < ApplicationController
     def set_film
       @film = Film.find(params[:id])
       @hotspot = @film.hotspots.new
+      @hotspots = @film.hotspots.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
