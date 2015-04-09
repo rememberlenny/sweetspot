@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 20150409165754) do
 
   create_table "hotspots", force: :cascade do |t|
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "film_id"
+    t.string   "destination"
   end
 
   add_index "hotspots", ["film_id"], name: "index_hotspots_on_film_id"
