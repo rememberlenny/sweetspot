@@ -27,8 +27,8 @@ class StoriesController < ApplicationController
       hotspots = photo.hotspots.all
       hotspots.each do |hotspot|
         jsweet = {
-          coordinates: hotspot.location,
-          destination: hotspot.destination,
+          coordinates: eval(hotspot.location),
+          destination: hotspot.destination.to_i,
           updated_at: hotspot.updated_at
         }
         jhotspots << jsweet
