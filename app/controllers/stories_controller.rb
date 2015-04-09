@@ -26,7 +26,16 @@ class StoriesController < ApplicationController
       jhotspots = []
       hotspots = photo.hotspots.all
       hotspots.each do |hotspot|
-        jhotspots << hotspot
+        jsweet = {
+          coordinates: hotspot.location,
+          destination: hotspot.destination,
+          updated_at: hotspot.updated_at
+        }
+        jhotspots << jsweet
+      end
+      image_url = nil
+      if !attachment_url(photo, :image).nil?
+        image_url = attachment_url(photo, :image) + '.jpeg'
       end
       jphoto << {
         title: photo.title,
@@ -34,7 +43,7 @@ class StoriesController < ApplicationController
         created_at: photo.created_at,
         updated_at: photo.updated_at,
         sweetspots: jhotspots,
-        image_url: attachment_url(photo, :image) + '.jpeg',
+        image_url: image_url,
       }
     end
 
