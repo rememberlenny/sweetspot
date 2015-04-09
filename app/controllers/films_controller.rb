@@ -1,4 +1,5 @@
 class FilmsController < ApplicationController
+  before_action :authenticate_user!, :except => [:show]
   before_action :set_film, only: [:show, :edit, :update, :destroy]
 
   # GET /films
