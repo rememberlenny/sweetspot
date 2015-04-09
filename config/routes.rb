@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'stories/:id/path' => 'stories#path'
+
+  match 'stories/:id/path', to: 'stories#path', via: [:get]
 
   devise_for :users
 
