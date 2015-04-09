@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/dash'
+
   resources :stories do
     resources :actors
     resources :films do

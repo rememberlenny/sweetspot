@@ -11,8 +11,22 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require devise_bootstrap_views
  *= require_self
  */
+
+a.navbar-brand {
+  float: none;
+  padding: 0px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  margin: 0 auto !important;
+  width: 241px;
+}
 
 // Override Bootstrap variables here (defaults from bootstrap-sass v3.3.4):
 

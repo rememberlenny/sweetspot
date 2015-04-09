@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
+gem 'devise-bootstrap-views'
 gem 'devise'
 gem 'annotate'
 gem "mini_magick"

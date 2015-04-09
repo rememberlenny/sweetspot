@@ -3,7 +3,7 @@ Refile.host = ENV['REFILE_HOST']
 class StoriesController < ApplicationController
 
   include Refile::AttachmentHelper
-  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :authenticate_user!, :except => [:path, :index]
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
