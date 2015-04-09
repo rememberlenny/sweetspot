@@ -1,3 +1,5 @@
+Refile.host = ENV['REFILE_HOST']
+
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
