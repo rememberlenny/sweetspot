@@ -1,6 +1,9 @@
 Refile.host = ENV['REFILE_HOST']
 
 class StoriesController < ApplicationController
+
+  include Refile::AttachmentHelper
+
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
@@ -31,7 +34,7 @@ class StoriesController < ApplicationController
         created_at: photo.created_at,
         updated_at: photo.updated_at,
         sweetspots: jhotspots,
-        image_url: photo,
+        image_url: attachment_url(photo, :image),
       }
     end
 
