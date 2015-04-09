@@ -1,27 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Stories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.name %></td>
-        <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div>
+  <%= link_to 'New Story', new_story_path %>
+</div>
 <br>
+<div>
+  <div class="">
+    <% @stories.each do |story| %>
+      <div class="col-xs-6 col-sm-3">
+        <div>
+          <p>
+            <%= image_tag attachment_url(story.films.first, :image, :fill, 300, 300)  %>
+          </p>
+        </div>
+        <div>
+          <td><%= story.name %></td>
+          <td><%= link_to 'Show', story %></td>
+          <td><%= link_to 'Edit', edit_story_path(story) %></td>
+          <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to 'New Story', new_story_path %>
+
