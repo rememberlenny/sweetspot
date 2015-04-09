@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def path
 
@@ -12,8 +12,16 @@ class StoriesController < ApplicationController
     respond_with(@stories)
   end
 
+  def show_json story
+    @story = story
+    return @story
+  end
+
   def show
-    respond_with(@story)
+    respond_to do |format|
+      format.html
+      format.json { render json: show_json(@story) }
+    end
     @film = @story.films.new
   end
 
