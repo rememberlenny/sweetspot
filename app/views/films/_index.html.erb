@@ -3,9 +3,9 @@
 <table class="table">
   <thead>
     <tr>
+      <th>ID </th>
       <th>Image </th>
       <th>Title</th>
-      <th>ID </th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -13,10 +13,10 @@
   <tbody>
     <% @films.each do |film| %>
       <tr>
+        <th><%= link_to film.id, [@story, film] %> </th>
         <td><%= link_to image_tag(attachment_url(film, :image, :fill, 250, 150)), [@story, film] %></td>
         <td><%= link_to film.title, [@story, film] %></td>
         <td><%= link_to 'Edit', edit_story_film_path(@story.id, film) %> | <%= link_to 'Destroy', film, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <th><%= film.id %> </th>
       </tr>
     <% end %>
   </tbody>
