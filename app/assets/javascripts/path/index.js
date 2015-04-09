@@ -30,7 +30,7 @@
         console.log('Running')
         $container = $('.container');
         $container.empty();
-        var data_url = window.location.href.replace('/path/', '.json');
+        var data_url = window.location.href.replace('/path', '.json');
         console.log(data_url);
         $.getJSON(data_url, function(data) {
             storyData = data;
