@@ -34,7 +34,7 @@ class StoriesController < ApplicationController
         created_at: photo.created_at,
         updated_at: photo.updated_at,
         sweetspots: jhotspots,
-        image_url: attachment_url(photo, :image),
+        image_url: attachment_url(photo, :image) + '.jpeg',
       }
     end
 
