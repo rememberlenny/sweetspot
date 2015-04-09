@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'stories/:id/path' => 'stories#path'
+
   devise_for :users
 
   resources :actors do
