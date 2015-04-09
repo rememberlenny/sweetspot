@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stories
+
   devise_for :users
 
   resources :actors do
@@ -8,5 +10,5 @@ Rails.application.routes.draw do
     resource :comments, module: :films
   end
 
-  root to: "films#index"
+  root to: "stories#index"
 end
