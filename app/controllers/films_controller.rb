@@ -24,12 +24,13 @@ class FilmsController < ApplicationController
   # POST /films
   # POST /films.json
   def create
-    @film = Film.new(film_params)
+    @story = Story.find(params[:story_id])
+    @film = @story.films.new(film_params)
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to @film, notice: 'Film was successfully created.' }
-        format.json { render :show, status: :created, location: @film }
+        format.html { redirect_to @story, notice: 'Film was successfully created.' }
+        format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }
         format.json { render json: @film.errors, status: :unprocessable_entity }

@@ -5,5 +5,12 @@
   <%= @story.name %>
 </p>
 
+<h1>New Photo</h1>
+<%= render 'films/form' %>
+
+<h1>Uploaded Photos</h1>
+<%= render 'films/index' %>
+
+
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

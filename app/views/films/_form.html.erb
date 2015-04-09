@@ -1,4 +1,4 @@
-<%= form_for(@film) do |f| %>
+<%= form_for([@story, @film]) do |f| %>
   <% if @film.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@film.errors.count, "error") %> prohibited this film from being saved:</h2>

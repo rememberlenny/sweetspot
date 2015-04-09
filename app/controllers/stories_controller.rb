@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
 
   def show
     respond_with(@story)
+    @film = @story.films.new
   end
 
   def new
@@ -39,6 +40,8 @@ class StoriesController < ApplicationController
   private
     def set_story
       @story = Story.find(params[:id])
+      @film = @story.films.new
+      @films = @story.films.all
     end
 
     def story_params
