@@ -1,7 +1,12 @@
+Refile.host = ENV['REFILE_HOST']
+
 class StoriesController < ApplicationController
+
+  include Refile::AttachmentHelper
+
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def path
 
@@ -12,8 +17,55 @@ class StoriesController < ApplicationController
     respond_with(@stories)
   end
 
+  def show_json story_id
+    story = Story.find(story_id)
+    photos = story.films.all
+    jphoto = []
+
+    photos.each do |photo|
+      jhotspots = []
+      hotspots = photo.hotspots.all
+      hotspots.each do |hotspot|
+        jsweet = {
+          coordinates: hotspot.location,
+          destination: hotspot.destination,
+          updated_at: hotspot.updated_at
+        }
+        jhotspots << jsweet
+      end
+      image_url = nil
+      if !attachment_url(photo, :image).nil?
+        image_url = attachment_url(photo, :image) + '.jpeg'
+      end
+      jphoto << {
+        id: photo.id,
+        title: photo.title,
+        description: photo.description,
+        created_at: photo.created_at,
+        updated_at: photo.updated_at,
+        sweetspots: jhotspots,
+        image_url: image_url,
+      }
+    end
+
+    json = {
+      story: {
+        name: story.name,
+        created_at: story.created_at,
+        updated_at: story.updated_at,
+        blurb: story.blurb,
+        byline: story.byline,
+      },
+      photos: jphoto
+    }
+    return json
+  end
+
   def show
-    respond_with(@story)
+    respond_to do |format|
+      format.html
+      format.json { render json: show_json(@story.id) }
+    end
     @film = @story.films.new
   end
 
