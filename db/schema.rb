@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409165319) do
+ActiveRecord::Schema.define(version: 20150409165754) do
 
   create_table "actor_films", force: :cascade do |t|
     t.integer  "actor_id"
