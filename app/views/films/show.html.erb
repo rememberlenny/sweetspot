@@ -5,8 +5,13 @@
 
 <div class="col-sm-8">
   <h1><%= @film.title %></h1>
-  <%= image_tag attachment_url(@film, :image, :fill, 300, 300) %>
+  <%= image_tag attachment_url(@film, :image, :fill, 300, 300), :class => 'image-target' %>
   <%= simple_format @film.description %>
+
+  <div>
+    <label for="">Click the image to select a coordinate. </label>
+    <input class="coord">
+  </div>
 
   <%= render partial: "comments/comments", locals: {commentable: @film} %>
   <%= render partial: "comments/form", locals: {commentable: @film} %>
@@ -20,23 +25,35 @@
 <script>
   var hoverReady = true;
 
-  $('img').on('mousemove', function(event){
+  $('.image-target').on('mousemove', function(event){
     reportCoordinates(event, this);
   });
 
-  $('img').on('click', function(event){
-    if($('img').hasClass('hoverReady')){
-      $('img').removeClass('hoverReady');
+  $('.image-target').on('click', function(event){
+    if($('.image-target').hasClass('hoverReady')){
+      $('.image-target').removeClass('hoverReady');
     } else {
-      $('img').addClass('hoverReady');
+      $('.image-target').addClass('hoverReady');
     }
   });
 
+  function updateCoordinateDiv(left, top){
+    $('.coord').val('[' + top + ', ' + left + ']');
+  }
+
   function reportCoordinates(event, tthis){
-    if(!$('img').hasClass('hoverReady')){
+    if(!$('.image-target').hasClass('hoverReady')){
       var left = event.pageX - $(tthis).offset().left;
       var top = event.pageY - $(tthis).offset().top;
-      console.log (left, top);
+      var w = $('.image-target').width();
+      var h = $('.image-target').height();
+      if(left/w !== undefined){
+        w = left/w;
+      }
+      if(top/h !== undefined){
+        h = top/h;
+      }
+      updateCoordinateDiv(w.toFixed(4), h.toFixed(4));
     }
   }
 </script>
