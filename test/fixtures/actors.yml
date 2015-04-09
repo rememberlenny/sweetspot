@@ -8,6 +8,11 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image_id    :string
+#  story_id    :integer
+#
+# Indexes
+#
+#  index_actors_on_story_id  (story_id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

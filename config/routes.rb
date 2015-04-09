@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :stories
+  resources :stories do
+    resources :actors
+    resources :films
+  end
 
   devise_for :users
 

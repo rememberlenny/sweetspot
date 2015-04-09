@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409160534) do
+ActiveRecord::Schema.define(version: 20150409160918) do
 
   create_table "actor_films", force: :cascade do |t|
     t.integer  "actor_id"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(version: 20150409160534) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image_id"
+    t.integer  "story_id"
   end
+
+  add_index "actors", ["story_id"], name: "index_actors_on_story_id"
 
   create_table "comments", force: :cascade do |t|
     t.string   "commentable_type"
@@ -43,7 +46,10 @@ ActiveRecord::Schema.define(version: 20150409160534) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image_id"
+    t.integer  "story_id"
   end
+
+  add_index "films", ["story_id"], name: "index_films_on_story_id"
 
   create_table "stories", force: :cascade do |t|
     t.string   "name"
