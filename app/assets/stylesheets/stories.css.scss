@@ -1,3 +1,36 @@
 // Place all the styles related to the stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hotspot {
+    border: solid 5px red;
+    height: 200px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 200px
+}
+
+.story-image {
+    position: relative;
+    opacity: 1;
+    img {
+        display: block;
+        width: 100%;
+    }   
+    transition: opacity 250ms ease;
+}
+
+.story-image.hide {
+    opacity: 0;
+}
+
+
+
+body .container {
+    background: black;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
