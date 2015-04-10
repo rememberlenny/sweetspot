@@ -58,6 +58,7 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bootstrap_forms (4.0.1)
     builder (3.2.2)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
@@ -244,6 +245,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootstrap_forms
   childprocess
   coffee-rails (~> 4.1.0)
   devise
