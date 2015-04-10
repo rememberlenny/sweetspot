@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410134837) do
+ActiveRecord::Schema.define(version: 20150410193019) do
 
   create_table "actor_films", force: :cascade do |t|
     t.integer  "actor_id"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20150410134837) do
 
   add_index "hotspots", ["film_id"], name: "index_hotspots_on_film_id"
 
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
   create_table "stories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",     null: false
@@ -84,6 +94,7 @@ ActiveRecord::Schema.define(version: 20150410134837) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
