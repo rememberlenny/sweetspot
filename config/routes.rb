@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
 
-  match 'stories/:id/path', to: 'stories#path', via: [:get]
+  match 'stories/:id/path', to: 'stories#path', via: [:get], as: :path
 
   devise_for :users
 
