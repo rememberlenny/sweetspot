@@ -73,30 +73,30 @@
         $el.find('.back-button').click(backClick);
         $el.find(".story-image").find(".hotspot").click(hotspotClick);
 
-        adjustSizeOfImage();
+        // adjustSizeOfImage();
     }
 
-    function adjustSizeOfImage(){
-        $( ".story-image img" ).load(function() {
-            var $image = $('.story-image img');
-            var wh = $(window).height();
-            var ww = $(window).width();
-            var ih = $image.height();
-            var iw = $image.width();
+    // function adjustSizeOfImage(){
+    //     $( ".story-image img" ).load(function() {
+    //         var $image = $('.story-image img');
+    //         var wh = $(window).height();
+    //         var ww = $(window).width();
+    //         var ih = $image.height();
+    //         var iw = $image.width();
 
-            console.log('wh/ww: ', wh/ww);
-            console.log('ih/iw: ', ih/iw);
+    //         console.log('wh/ww: ', wh/ww);
+    //         console.log('ih/iw: ', ih/iw);
 
-            if(wh/ww > ih/iw ){
-              $image.css('max-height', wh +'px');
-              $image.css('max-width', '100%');
-            } else {
-              $image.css('max-width', '100%');
-            }
-            iw = $('.story-image img').width();
-            $('.story-image').css('width', iw);
-        });
-    }
+    //         if(wh/ww > ih/iw ){
+    //           $image.css('max-height', wh +'px');
+    //           $image.css('max-width', '100%');
+    //         } else {
+    //           $image.css('max-width', '100%');
+    //         }
+    //         iw = $('.story-image img').width();
+    //         $('.story-image').css('width', iw);
+    //     });
+    // }
 
     //save reference to viewed image
     function storeOldStoryImage($el) {
