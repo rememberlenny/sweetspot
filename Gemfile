@@ -10,14 +10,23 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
-gem 'devise-bootstrap-views'
-gem 'devise'
 gem 'annotate'
 gem "mini_magick"
 gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 gem 'rollbar', '~> 1.4.4'
 gem 'apartment'
+
+# Admin
+gem 'devise'
+gem 'devise-bootstrap-views'
+gem 'devise_invitable'
+gem 'devise_uid'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 
 group :development do
   gem 'pry-rails'
