@@ -13,6 +13,7 @@
 #
 
 class Story < ActiveRecord::Base
+  acts_as_paranoid
   has_many :actors
   has_many :films
 end

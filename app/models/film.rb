@@ -16,6 +16,7 @@
 #
 
 class Film < ActiveRecord::Base
+  acts_as_paranoid
   has_many :comments, as: :commentable
   attachment :image
   belongs_to :story

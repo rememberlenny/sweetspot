@@ -29,6 +29,7 @@
 #
 
 class User < ActiveRecord::Base
+  acts_as_paranoid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   TEMP_EMAIL_PREFIX = 'change@me'
