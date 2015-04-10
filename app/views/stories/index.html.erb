@@ -7,7 +7,9 @@
   <div class="">
     <% @stories.each do |story| %>
       <div class="col-md-4">
+        <%= link_to 'test', {:controller => "stories", :action => "path", :id => story.id} do %>
         <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300)  %>
+        <% end %>
         <div>
           <td><%= story.name %></td>
           <% if user_signed_in? %>
