@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   match 'stories/:id/path', to: 'stories#path', via: [:get], as: :path
 
-  # devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
-  # match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   resources :actors do
     resources :comments, module: :actors
