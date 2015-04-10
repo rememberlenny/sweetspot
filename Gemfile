@@ -16,6 +16,7 @@ gem 'annotate'
 gem "mini_magick"
 gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'pry-rails'
