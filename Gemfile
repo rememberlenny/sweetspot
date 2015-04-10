@@ -18,6 +18,7 @@ gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 gem 'rollbar', '~> 1.4.4'
 
+
 group :development do
   gem 'pry-rails'
   gem 'better_errors'

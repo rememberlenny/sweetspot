@@ -76,6 +76,9 @@ body.path-type .container {
 
 body.path-type {
     background: black;
+    #hbl_operator_state_div{
+        display: none !important;
+    }
 }
 
 .back-button {
