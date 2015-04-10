@@ -69,7 +69,7 @@
     }
 
     function adjustSizeOfImage(){
-        var $image = $('img');
+        var $image = $('.story-image img');
         var wh = $(window).height();
         var ww = $(window).width();
         var ih = $image.height();
