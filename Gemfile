@@ -17,6 +17,12 @@ gem "mini_magick"
 gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 
+gem 'twitter-bootswatch-rails', '~> 3.3.2'
+
+# twitter bootstrap helpers gem, e.g., alerts etc...
+gem 'twitter-bootswatch-rails-helpers'
+gem 'bootstrap_forms'
+
 group :development do
   gem 'pry-rails'
   gem 'better_errors'

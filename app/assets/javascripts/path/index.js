@@ -63,10 +63,28 @@
         });
 
         $el.find('.back-button').click(backClick);
-
         $el.find(".story-image").find(".hotspot").click(hotspotClick);
+
+        adjustSizeOfImage();
     }
 
+    function adjustSizeOfImage(){
+        var $image = $('img');
+        var wh = $(window).height();
+        var ww = $(window).width();
+        var ih = $image.height();
+        var iw = $image.width();
+
+        console.log('wh/ww: ', wh/ww);
+        console.log('ih/iw: ', ih/iw);
+
+        if(wh/ww > ih/iw ){
+          $image.css('max-height', wh +'px');
+          $image.css('max-width', '100%');
+        } else {
+          $image.css('max-width', '100%');
+        }
+    };
 
     //save reference to viewed image
     function storeOldStoryImage($el) {

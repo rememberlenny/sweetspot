@@ -13,9 +13,11 @@
 .story-image {
     position: relative;
     opacity: 1;
+    max-width: 100%;
+    overflow: hidden;
     img {
         display: block;
-        width: 100%;
+        max-width: 100%;
     }
     transition: opacity 250ms ease;
 }
