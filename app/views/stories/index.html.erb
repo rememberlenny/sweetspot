@@ -6,12 +6,8 @@
 <div>
   <div class="">
     <% @stories.each do |story| %>
-      <div class="col-xs-6 col-sm-3">
-        <div>
-          <p>
-            <%= image_tag attachment_url(story.films.first, :image, :fill, 300, 300)  %>
-          </p>
-        </div>
+      <div class="col-md-4">
+        <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300)  %>
         <div>
           <td><%= story.name %></td>
           <td><%= link_to 'Show', story %></td>
