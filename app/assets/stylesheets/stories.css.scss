@@ -6,25 +6,26 @@ $hotpink: #e44d90;
 
 .hotspot {
     // border: solid 5px red;
-    background-color: transparentize($hotpink, 0.9);
+    background-color: $hotpink;
     border-radius: 50%;
     height: 80px;
-    opacity: 1;
+    opacity: 0.25;
     position: absolute;
     transform: translate(-50%, -50%);
     width: 80px;
 
     &:hover {
-        background-color: transparentize($hotpink, 0.3);
+        background-color: $hotpink;
+        opacity: 0.9;
         transition: all 2000ms ease;
     }
 }
 
 .pulse .hotspot {
-    -webkit-animation: PULSE 1s infinite; /* Safari 4+ */
-    -moz-animation:    PULSE 1s infinite; /* Fx 5+ */
-    -o-animation:      PULSE 1s infinite; /* Opera 12+ */
-    animation:         PULSE 1s infinite; /* IE 10+, Fx 29+ */
+    -webkit-animation: PULSE 2s infinite; /* Safari 4+ */
+    -moz-animation:    PULSE 2s infinite; /* Fx 5+ */
+    -o-animation:      PULSE 2s infinite; /* Opera 12+ */
+    animation:         PULSE 2s infinite; /* IE 10+, Fx 29+ */
 }
 
 .story-image {
