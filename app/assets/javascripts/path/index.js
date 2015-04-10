@@ -84,8 +84,10 @@
         } else {
           $image.css('max-width', '100%');
         }
-        iw = $image.width();
-        $('.story-image').css('width', iw);
+        $( ".story-image img" ).load(function() {
+            iw = $('.story-image img').width();
+            $('.story-image').css('width', iw);
+        }
     };
 
     //save reference to viewed image
