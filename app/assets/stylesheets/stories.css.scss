@@ -39,14 +39,13 @@ $hotpink: #e44d90;
 }
 
 .story-image {
-    margin: 0 auto;
     position: relative;
     opacity: 1;
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
     img {
         display: block;
-        max-width: 100%;
+        width: 100%;
     }
     transition: opacity 250ms ease;
 }
