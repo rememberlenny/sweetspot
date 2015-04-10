@@ -26,6 +26,8 @@
 </style>
 <% if user_signed_in? %>
   <script>
+    olark.configure('features.google_analytics', true);
+    olark.configure('system.google_analytics_id', 'UA-61741947-1' );
     olark.identify('logged-in-user-<%= current_user.id %>');
   </script>
 <% end %>
