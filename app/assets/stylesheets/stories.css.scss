@@ -2,12 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$hotpink: #e44d90;
+
 .hotspot {
-    border: solid 5px red;
-    height: 200px;
+    // border: solid 5px red;
+    background-color: transparentize($hotpink, 0.9);
+    border-radius: 50%;
+    height: 80px;
+    opacity: 1;
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 200px
+    width: 80px;
+
+    &:hover {
+        background-color: transparentize($hotpink, 0.3);
+        transition: all 2000ms ease;
+    }
+}
+
+.pulse .hotspot {
+    -webkit-animation: PULSE 1s infinite; /* Safari 4+ */
+    -moz-animation:    PULSE 1s infinite; /* Fx 5+ */
+    -o-animation:      PULSE 1s infinite; /* Opera 12+ */
+    animation:         PULSE 1s infinite; /* IE 10+, Fx 29+ */
 }
 
 .story-image {
@@ -24,13 +41,50 @@
     opacity: 0;
 }
 
+.story-image-control {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+}
 
 
 body.path-type .container {
     background: black;
     bottom: 0;
     left: 0;
+    padding: 0;
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+body.path-type {
+    background: black;
+}
+
+@-webkit-keyframes PULSE {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes PULSE {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+
+}
+@-o-keyframes PULSE{
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+
+
+}
+@keyframes PULSE {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+
 }
