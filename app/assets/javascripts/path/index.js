@@ -63,7 +63,7 @@
         if (storyData.photos.indexOf(storyObj) == 0) {
             isFirst = true;
         }
-        var template = _.template("<div data-id='<%= story.id %>' class='story-image'><% if (!first) { %><div class='story-image-control'><div class='btn btn-primary back-button'>back</div></div><%}%><img src='<%= story.image_url %>' ></div>");
+        var template = _.template("<div data-id='<%= story.id %>' class='story-image'><% if (!first) { %><div class='story-image-control'><i class='fa fa-arrow-circle-left fa-4x back-button'></i></div><%}%><img src='<%= story.image_url %>' ></div>");
         var markup = template({story: storyObj, first: isFirst});
         $el.append(markup);
         _.each(storyObj.sweetspots, function(sweetspot) {

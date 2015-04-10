@@ -43,8 +43,9 @@ $hotpink: #e44d90;
 
 .story-image-control {
     left: 0;
-    position: absolute;
-    top: 0;
+    margin: 20px;
+    position: fixed;
+    bottom: 0;
     z-index: 5;
     width: 100%;
 }
@@ -62,6 +63,10 @@ body.path-type .container {
 
 body.path-type {
     background: black;
+}
+
+.back-button {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 @-webkit-keyframes PULSE {
