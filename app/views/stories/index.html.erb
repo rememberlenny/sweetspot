@@ -10,8 +10,8 @@
         <%= link_to path_path(story.id) do %>
         <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300)  %>
         <% end %>
-        <div>
-          <td><%= story.name %></td>
+        <div style="text-align: center;">
+          <td><%= story.name %></td><br>
           <% if user_signed_in? %>
             <td><%= link_to 'Show', story %></td>
             <td><%= link_to 'Edit', edit_story_path(story) %></td>
