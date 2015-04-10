@@ -28,6 +28,16 @@ $hotpink: #e44d90;
     animation:         PULSE 2s infinite; /* IE 10+, Fx 29+ */
 }
 
+.story-info {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+}
+
 .story-image {
     position: relative;
     opacity: 1;
