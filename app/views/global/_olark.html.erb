@@ -19,10 +19,13 @@
   olark.identify('3652-862-10-5666');/*]]>*/</script>
   <noscript><a href="https://www.olark.com/site/3652-862-10-5666/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
   <!-- end olark code -->
+<style>
+  #hbl_operator_state_div, .hbl_operator_state_div{
+    display: block !important;
+  }
+</style>
 <% if user_signed_in? %>
-  <style>
-    #hbl_operator_state_div, .hbl_operator_state_div{
-      display: block !important;
-    }
-  </style>
+  <script>
+    olark.identify('logged-in-user-<%= current_user.id %>');
+  </script>
 <% end %>
