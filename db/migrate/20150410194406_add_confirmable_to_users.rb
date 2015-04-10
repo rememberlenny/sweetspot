@@ -8,7 +8,6 @@ class AddConfirmableToUsers < ActiveRecord::Migration
       t.string   :unconfirmed_email # Only if using reconfirmable
 
       add_index :users, :confirmation_token,   unique: true
-      add_index :users, :unlock_token,         unique: true
 
     end
   end
