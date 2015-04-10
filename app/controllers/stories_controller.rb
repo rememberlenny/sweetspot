@@ -55,6 +55,8 @@ class StoriesController < ApplicationController
         updated_at: story.updated_at,
         blurb: story.blurb,
         byline: story.byline,
+        featured: story.featured_photo,
+        first_slide: story.first_slide
       },
       photos: jphoto
     }
