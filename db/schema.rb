@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410194406) do
+ActiveRecord::Schema.define(version: 20150410195941) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "actor_films", force: :cascade do |t|
     t.integer  "actor_id"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150410194406) do
     t.integer  "story_id"
   end
 
-  add_index "actors", ["story_id"], name: "index_actors_on_story_id"
+  add_index "actors", ["story_id"], name: "index_actors_on_story_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "commentable_type"
@@ -47,9 +50,11 @@ ActiveRecord::Schema.define(version: 20150410194406) do
     t.datetime "updated_at",  null: false
     t.string   "image_id"
     t.integer  "story_id"
+    t.datetime "deleted_at"
   end
 
-  add_index "films", ["story_id"], name: "index_films_on_story_id"
+  add_index "films", ["deleted_at"], name: "index_films_on_deleted_at", using: :btree
+  add_index "films", ["story_id"], name: "index_films_on_story_id", using: :btree
 
   create_table "hotspots", force: :cascade do |t|
     t.string   "location"
@@ -57,9 +62,11 @@ ActiveRecord::Schema.define(version: 20150410194406) do
     t.datetime "updated_at",  null: false
     t.integer  "film_id"
     t.string   "destination"
+    t.datetime "deleted_at"
   end
 
-  add_index "hotspots", ["film_id"], name: "index_hotspots_on_film_id"
+  add_index "hotspots", ["deleted_at"], name: "index_hotspots_on_deleted_at", using: :btree
+  add_index "hotspots", ["film_id"], name: "index_hotspots_on_film_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -69,7 +76,7 @@ ActiveRecord::Schema.define(version: 20150410194406) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "stories", force: :cascade do |t|
     t.string   "name"
@@ -79,7 +86,10 @@ ActiveRecord::Schema.define(version: 20150410194406) do
     t.text     "blurb"
     t.string   "featured_photo"
     t.string   "first_slide"
+    t.datetime "deleted_at"
   end
+
+  add_index "stories", ["deleted_at"], name: "index_stories_on_deleted_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -99,10 +109,13 @@ ActiveRecord::Schema.define(version: 20150410194406) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.datetime "deleted_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "identities", "users"
 end

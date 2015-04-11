@@ -10,6 +10,11 @@
 #  blurb          :text
 #  featured_photo :string
 #  first_slide    :string
+#  deleted_at     :datetime
+#
+# Indexes
+#
+#  index_stories_on_deleted_at  (deleted_at)
 #
 
 require 'rails_helper'
