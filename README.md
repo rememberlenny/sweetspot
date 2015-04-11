@@ -2,6 +2,10 @@
 
 Photo naratives created using hotspots.
 
+## Setup
+
+Local database runs with postgres.
+
 ## Authors
 
 Lenny Bogdonoff, Conde Nast @rememberlenny
