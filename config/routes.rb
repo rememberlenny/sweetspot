@@ -24,5 +24,5 @@ Rails.application.routes.draw do
 
   root to: "stories#index"
 
-  get "*any", via: :all, to: "errors#not_found" #404
+  # get "*any", via: :all, to: "errors#not_found" #404
 end
