@@ -27,6 +27,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 
+gem 'pg'
 
 group :development do
   gem 'pry-rails'
@@ -38,11 +39,9 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'sqlite3'
   gem 'childprocess'
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
