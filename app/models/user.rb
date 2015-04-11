@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-    # :confirmable,
+    :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
@@ -86,6 +86,6 @@ class User < ActiveRecord::Base
   end
 
   def email_verified?
-    # self.email && self.email !~ TEMP_EMAIL_REGEX
+    self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 end
