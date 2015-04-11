@@ -27,7 +27,7 @@ class StoriesController < ApplicationController
       hotspots = photo.hotspots.all
       hotspots.each do |hotspot|
         location = []
-        if (!hotspot.location.nil?)
+        if !hotspot.location.nil?
           location = eval(hotspot.location)
         end
         jsweet = {

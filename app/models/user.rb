@@ -86,6 +86,6 @@ class User < ActiveRecord::Base
   end
 
   def email_verified?
-    self.email && self.email !~ TEMP_EMAIL_REGEX
+    # self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 end
