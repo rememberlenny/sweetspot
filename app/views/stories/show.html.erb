@@ -10,6 +10,9 @@
     <%= link_to 'View Story', path_path(@story.id), class: 'btn btn-primary' %>
     <%= link_to 'Back', stories_path, class: 'btn btn-default' %>
 
+    <hr>
+    <p><b>Embed Code</b></p>
+    <input value="<%= @embed_code %>">
   </div>
   <div class="clearfix"></div>
 </div>
