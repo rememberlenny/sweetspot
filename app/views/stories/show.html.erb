@@ -12,7 +12,7 @@
 
     <hr>
     <p><b>Embed Code</b></p>
-    <input value="<%= embed_code(@story) %>">
+    <input class="col-md-12" onClick="this.setSelectionRange(0, this.value.length)" value="<%= embed_code(@story) %>">
   </div>
   <div class="clearfix"></div>
 </div>
