@@ -71,7 +71,7 @@ class StoriesController < ApplicationController
     if @story.featured_photo.nil?
       @featured_image = @story.films.first
     else
-      @featured_image = @story.featured_photo
+      @featured_image = Film.find(@story.featured_photo.to_i)
     end
     respond_to do |format|
       format.html
