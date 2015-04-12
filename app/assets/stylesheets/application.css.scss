@@ -15,7 +15,16 @@
  *= require_self
  */
 
-
+.footer{
+  background: rgb(30, 30, 30);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: rgb(255, 255, 255);
+  ul{
+    margin: 0;
+    padding-left: 1em;
+  }
+}
 
 a.navbar-brand {
   float: none;

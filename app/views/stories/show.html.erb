@@ -1,20 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @story.name %>
-</p>
-
-<div class="row">
-  <div class="col-md-4">
-    <h1>New Photo</h1>
-    <%= render 'films/form' %>
-  </div>
-  <div class="col-md-8">
-    <h1>Uploaded Photos</h1>
-    <%= render 'films/index' %>
-  </div>
-</div>
-
-<%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>
