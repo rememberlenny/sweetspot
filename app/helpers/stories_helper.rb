@@ -13,6 +13,16 @@ module StoriesHelper
     links = []
 
     story.films.each do |photo|
+      if !story.name.nil?
+        name = story.name
+      else
+        name = 'Unnamed'
+      end
+      node = {
+        name: name,
+        group: 1
+      }
+      nodes << node
       photo.hotspots.each do |hotspot|
         link = {
           source: photo.id,
