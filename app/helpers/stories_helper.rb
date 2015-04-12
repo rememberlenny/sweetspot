@@ -7,4 +7,26 @@ module StoriesHelper
     return embed_code
   end
 
+  def network_json story
+
+    nodes = []
+    links = []
+
+    story.films.each do |photo|
+      photo.hotspots.each do |hotspot|
+        link = {
+          source: photo.id,
+          target: hotspot.film_id,
+          value: 1
+        }
+        links << link
+      end
+    end
+    datas = {
+      nodes: nodes,
+      links: links
+    }
+    return datas
+  end
+
 end
