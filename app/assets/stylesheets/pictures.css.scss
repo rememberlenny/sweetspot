@@ -28,10 +28,12 @@
 }
 
 .video-wrapper{
+  background: black;
   width: 100%;
   max-height: 450px;
   overflow:hidden;
   video{
+    opacity: .8;
     width: 100%;
   }
 }
