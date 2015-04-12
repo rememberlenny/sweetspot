@@ -1,6 +1,10 @@
 <div class="content-wrapper">
   <div class="col-md-8">
-    <%= image_tag attachment_url(@featured_image, :image, :fill, 700, 500)  %>
+    <div class="image-container">
+      <%= image_tag attachment_url(@featured_image, :image, :fill, 700, 500)  %>
+      <input class="col-md-12" onClick="this.setSelectionRange(0, this.value.length)" value="<%= embed_code(@story) %>">
+    </div>
+
   </div>
   <div class="col-md-4">
     <h1><%= @story.name %></h1>
@@ -10,10 +14,8 @@
     <%= link_to 'View Story', path_path(@story.id), class: 'btn btn-primary' %>
     <%= link_to 'Back', stories_path, class: 'btn btn-default' %>
     <hr>
-    <p><b>Embed Code</b></p>
-    <input class="col-md-12" onClick="this.setSelectionRange(0, this.value.length)" value="<%= embed_code(@story) %>">
-
-    <%= network_json(@story) %>
+    <%= render 'stories/network' %>
+    <hr>
   </div>
   <div class="clearfix"></div>
 </div>

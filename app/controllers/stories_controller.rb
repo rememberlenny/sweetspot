@@ -4,12 +4,44 @@ class StoriesController < ApplicationController
 
   include Refile::AttachmentHelper
   before_action :authenticate_user!, :except => [:path, :index, :show, :show_json]
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:network, :show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
   def path
 
+  end
+
+  def network
+    nodes = []
+    links = []
+
+    @story.films.each do |photo|
+      if !@story.name.nil?
+        name = @story.name
+      else
+        name = 'Unnamed'
+      end
+      node = {
+        name: name,
+        group: photo.id
+      }
+      nodes << node
+      photo.hotspots.each do |hotspot|
+        link = {
+          source: photo.id,
+          target: hotspot.destination.to_i,
+          value: 1
+        }
+        links << link
+      end
+    end
+    datas = {
+      nodes: nodes,
+      links: links
+    }
+
+    render json: datas.to_json
   end
 
   def index

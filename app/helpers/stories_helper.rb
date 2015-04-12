@@ -9,34 +9,6 @@ module StoriesHelper
 
   def network_json story
 
-    nodes = []
-    links = []
-
-    story.films.each do |photo|
-      if !story.name.nil?
-        name = story.name
-      else
-        name = 'Unnamed'
-      end
-      node = {
-        name: name,
-        group: 1
-      }
-      nodes << node
-      photo.hotspots.each do |hotspot|
-        link = {
-          source: photo.id,
-          target: hotspot.destination,
-          value: 1
-        }
-        links << link
-      end
-    end
-    datas = {
-      nodes: nodes,
-      links: links
-    }
-    return datas.to_json
   end
 
 end
