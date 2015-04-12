@@ -64,7 +64,7 @@
         if (storyObj.id == storyData.story.first_slide) {
             isFirst = true;
         }
-        var template = _.template("<div data-id='<%= story.id %>' class='story-image'><% if (!first) { %><div class='story-image-control'><div class='back-button'>back<img src='' alt=''></div></div><%} else {%> <div class='story-info'><h1 class'story-title'> <%=info.name%></h1><h3><%=info.blurb%></h3><h3><%=info.byline%></h3></div><% } %><img src='<%= story.image_url %>' ></div>");
+        var template = _.template("<div data-id='<%= story.id %>' class='story-image'><% if (!first) { %><div class='story-image-control'><div class='back-button'></div></div><%} else {%> <div class='story-info'><h1 class'story-title'> <%=info.name%></h1><h3><%=info.blurb%></h3><h3><%=info.byline%></h3></div><% } %><img src='<%= story.image_url %>' ></div>");
         var markup = template({story: storyObj, first: isFirst, info: storyData.story});
         $el.append(markup);
         _.each(storyObj.sweetspots, function(sweetspot) {

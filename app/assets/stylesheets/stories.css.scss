@@ -118,7 +118,12 @@ body.path-type {
 }
 
 .back-button {
+    background-image: image-url("arrow-circle-left_ffffff_50.png");
+    background-size: 100%;
+    cursor: pointer;
     color: rgba(255, 255, 255, 0.5);
+    height: 50px;
+    width: 50px;
 }
 
 @-webkit-keyframes PULSE {

@@ -1,3 +1,5 @@
+![](http://i.imgur.com/fmwLavA.jpg)
+
 # SweetSpot
 
 Photo naratives created using hotspots.
