@@ -8,10 +8,10 @@
 #  updated_at     :datetime         not null
 #  byline         :text
 #  blurb          :text
-#  featured_photo :string
-#  first_slide    :string
 #  deleted_at     :datetime
 #  groups_id      :integer
+#  featured_photo :integer
+#  first_slide    :integer
 #
 # Indexes
 #
