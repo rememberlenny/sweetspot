@@ -68,6 +68,11 @@ class StoriesController < ApplicationController
   end
 
   def show
+    if @story.featured_photo.nil?
+      @featured_image = @story.films.first
+    else
+      @featured_image = @story.featured_photo
+    end
     respond_to do |format|
       format.html
       format.json { render json: show_json(@story.id) }
