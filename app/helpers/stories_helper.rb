@@ -16,7 +16,7 @@ module StoriesHelper
       photo.hotspots.each do |hotspot|
         link = {
           source: photo.id,
-          target: hotspot.film_id,
+          target: hotspot.destination,
           value: 1
         }
         links << link
@@ -26,7 +26,7 @@ module StoriesHelper
       nodes: nodes,
       links: links
     }
-    return datas
+    return datas.to_json
   end
 
 end
