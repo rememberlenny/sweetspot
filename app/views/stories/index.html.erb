@@ -1,26 +1,27 @@
-<p id="notice"><%= notice %></p>
-<div>
-  <%= link_to 'New Story', new_story_path %>
-</div>
-<br>
-<div>
-  <div class="">
-    <% @stories.each do |story| %>
-      <div class="col-md-4">
-        <%= link_to path_path(story.id) do %>
-        <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300)  %>
-        <% end %>
-        <div style="text-align: center;">
-          <td><%= story.name %></td><br>
-          <% if user_signed_in? %>
-            <td><%= link_to 'Show', story %></td>
-            <td><%= link_to 'Edit', edit_story_path(story) %></td>
-            <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%= render 'partial/home_hero' %>
+  <div class="stories-index index-block">
+    <div class="text-center text-block">
+      <h2>Storytelling for Everyone</h2>
+      <p>Checkout new, engaging stories for inspiration.</p>
+    </div>
+    <div class="">
+      <% @stories.each do |story| %>
+        <div class="col-md-4 image-wrapper">
+          <%= link_to path_path(story.id) do %>
+          <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300)  %>
           <% end %>
+          <h3 class="story-text"><%= story.name %></h3>
+          <div style="text-align: center;">
+            <% if user_signed_in? %>
+              <td><%= link_to 'Show', story %></td>
+              <td><%= link_to 'Edit', edit_story_path(story) %></td>
+              <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="clearfix"></div>
   </div>
-</div>
 
 

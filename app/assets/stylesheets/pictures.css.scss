@@ -1,0 +1,13 @@
+.image-wrapper{
+  position: relative;
+  text-align: center;
+  .story-text{
+    position: absolute;
+    top:50%;
+    left: 0px;
+    right: 0px;
+    margin: -.5em auto 0;
+    font-size: 38px;
+    color: rgb(255, 255, 255);
+  }
+}
