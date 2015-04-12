@@ -11,10 +11,12 @@
 #  featured_photo :string
 #  first_slide    :string
 #  deleted_at     :datetime
+#  groups_id      :integer
 #
 # Indexes
 #
 #  index_stories_on_deleted_at  (deleted_at)
+#  index_stories_on_groups_id   (groups_id)
 #
 
 class Story < ActiveRecord::Base

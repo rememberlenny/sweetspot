@@ -8,20 +8,11 @@ Rails.application.routes.draw do
     end
   end
 
-
   match 'stories/:id/path',     to: 'stories#path',     via: [:get], as: :path
   match 'stories/:id/network',  to: 'stories#network',  via: [:get], as: :network
 
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
-
-  resources :actors do
-    resources :comments, module: :actors
-  end
-  resources :films do
-    resource :comments, module: :films
-    resources :hotspots
-  end
 
   root to: "stories#index"
 

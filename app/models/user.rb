@@ -21,12 +21,14 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  deleted_at             :datetime
+#  groups_id              :integer
 #
 # Indexes
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_deleted_at            (deleted_at)
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_groups_id             (groups_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
