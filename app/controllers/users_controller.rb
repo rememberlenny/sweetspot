@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def dash
-
+    @stories = Story.live.includes(:draft).order(:updated_at
   end
 
   # GET /users/:id/edit

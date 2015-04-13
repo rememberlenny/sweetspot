@@ -1,0 +1,9 @@
+<%= render 'stories/create_block'%>
+<% @stories.each do |story| %>
+  <div class="col-md-6">
+    <h5>Updated <%= time_ago_in_words(story.updated_at) %></h5>
+    <h3><%= story.name %></h3>
+    <hr>
+    <%= link_to 'Edit Story', edit_story_path(story), :class => 'btn btn-default' %>
+  </div>
+<% end %>
