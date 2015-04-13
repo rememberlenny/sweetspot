@@ -17,9 +17,12 @@ class StoriesController < ApplicationController
   def network
     nodes = []
     links = []
-    i = 0
-
-    @story.films.each do |photo|
+    first_id = @story.films.first.id
+    if @story.id == 1
+      first_id = 0
+    end
+    @photos =  @story.films.order(:id)
+    @photos.each do |photo|
       if !photo.title.blank?
         name = photo.title
       else
@@ -28,13 +31,13 @@ class StoriesController < ApplicationController
       if !photo.id.nil?
         node = {
           name: name,
-          group: photo.id
+          group: photo.id - first_id
         }
         nodes << node
         photo.hotspots.each do |hotspot|
           link = {
-            source: photo.id,
-            target: hotspot.destination.to_i,
+            source: photo.id - first_id,
+            target: hotspot.destination.to_i - first_id,
             value: 1
           }
           links << link
