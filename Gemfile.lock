@@ -193,6 +193,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.1)
       sprockets-rails
+    rails-admin-scaffold (0.1.0)
+      rails (>= 4.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.6)
@@ -313,6 +315,7 @@ DEPENDENCIES
   pg
   pry-rails
   rails (~> 4.2.0)
+  rails-admin-scaffold
   rails_12factor
   refile (~> 0.4.2)
   rollbar (~> 1.4.4)

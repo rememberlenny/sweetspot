@@ -1,10 +1,12 @@
 Refile.host = ENV['REFILE_HOST']
 
-class StoriesController < ApplicationController
+class Admin::StoriesController < Admin::BaseController
 
   include Refile::AttachmentHelper
   before_action :authenticate_user!, :except => [:network, :path, :index, :show, :show_json]
-  before_action :set_story, only: [:network, :show, :edit, :update, :destroy]
+
+  before_filter :find_story,  :only => [:network, :show, :edit, :update, :destroy]
+  before_filter :reify_story, :only => [:show, :edit]
 
   respond_to :html, :json
 
@@ -45,7 +47,13 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.all
+    # The `live` scope gives us widgets that aren't in the trash.
+    # It's also strongly recommended that you eagerly-load the `draft` association via `includes` so you don't keep
+    # hitting your database for each draft.
+    @stories = Story.live.includes(:draft).order(:title)
+
+    # Load drafted versions of each widget
+    @stories.map! { |story| story.draft.reify if story.draft? }
     respond_with(@stories)
   end
 
@@ -122,28 +130,52 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-    @story.save
-    respond_with(@story)
+
+    if @story.draft_creation
+      flash[:success] = 'A draft of the new story was saved successfully.'
+      redirect_to story_path
+    else
+      flash[:error] = 'There was an error creating the story. Please review the errors below and try again.'
+      render :new
+    end
   end
 
   def update
-    @story.update(story_params)
-    respond_with(@story)
+
+    @story.attributes = story_params
+
+    # Instead of calling `update_attributes`, you call `draft_update` to save it as a draft
+    if @story.draft_update
+      flash[:success] = 'A draft of the story update was saved successfully.'
+      redirect_to storys_path
+    else
+      flash[:error] = 'There was an error updating the story. Please review the errors below and try again.'
+      render :edit
+    end
   end
 
   def destroy
-    @story.destroy
-    respond_with(@story)
+    # Instead of calling `destroy`, you call `draft_destroy` to "trash" it as a draft
+    @story.draft_destroy
+    flash[:success] = 'The story was moved to the trash.'
+    redirect_to story_path
   end
 
-  private
-    def set_story
-      @story = Story.find(params[:id])
-      @film = @story.films.new
-      @films = @story.films.all
-    end
+private
 
-    def story_params
-      params.require(:story).permit(:name, :first_slide, :featured_photo, :blurb, :byline)
-    end
+  # Finds non-trashed widget by `params[:id]`
+  def find_story
+    @story = Story.live.find(params[:id])
+    @film = @story.films.new
+    @films = @story.films.all
+  end
+
+  # If the widget has a draft, load that version of it
+  def reify_story
+    @story = @story.draft.reify if @story.draft?
+  end
+
+  def story_params
+    params.require(:story).permit(:name, :first_slide, :featured_photo, :blurb, :byline)
+  end
 end

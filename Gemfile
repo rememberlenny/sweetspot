@@ -20,6 +20,7 @@ gem "aws-sdk", '< 2'
 gem 'rollbar', '~> 1.4.4'
 gem "paranoia", "~> 2.0"
 
+gem 'rails-admin-scaffold'
 gem "letter_opener"
 gem 'draftsman', '0.3.1'
 
