@@ -54,8 +54,7 @@ d3.json(network_data, function(error, graph) {
       .attr("class", "node")
       .attr("r", 5)
       .style("fill", function(d) { return color(d.group); })
-      .on("mouseover", mouseover)
-      .on("click", click)
+      .on("mouseover", click)
       .call(force.drag);
 
   node.append("text")
@@ -74,7 +73,7 @@ d3.json(network_data, function(error, graph) {
   });
 
   function mouseover() {
-    click();
+
   }
 
   function click() {
