@@ -94,6 +94,8 @@ GEM
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
+    draftsman (0.3.1)
+      activerecord (>= 3.0, < 5.0)
     erubis (2.7.0)
     execjs (2.5.2)
     factory_girl (4.5.0)
@@ -295,6 +297,7 @@ DEPENDENCIES
   devise_invitable
   devise_uid
   dotenv-rails
+  draftsman (= 0.3.1)
   factory_girl_rails
   friendly_id
   gritter

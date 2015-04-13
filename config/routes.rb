@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  root to: "stories#index"
+  root to: "static_pages#home"
 
   # get "*any", via: :all, to: "errors#not_found" #404 - Creates issues with reflie
 end

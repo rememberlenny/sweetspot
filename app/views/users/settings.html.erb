@@ -1,0 +1,32 @@
+<%= render 'partial/topnav_global' %>
+</div><!-- End container -->
+
+<div class="admin-wrapper">
+  <div class="container">
+    <div class="clearfix"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-10 content-column">
+      <div class="col-md-3 side-nav-items">
+        <ul class="list-unstyled">
+          <li><%= link_to 'Your stories', root_path, :class => 'current' %></li>
+          <li><%= link_to 'Your photos', root_path %></li>
+          <li><%= link_to 'gda', root_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-9 content-holder">
+        <div class="messaging">
+          <h3>You don’t have any stories!</h3>
+
+          <p>Listing your space on Airbnb is an easy way to monetize any extra space you have.</p>
+
+          <p>You’ll also get to meet interesting travelers from around the world!</p>
+
+          <%= link_to 'Post a new stories', new_story_path, :class => 'btn btn-primary' %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
