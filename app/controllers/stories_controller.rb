@@ -147,7 +147,7 @@ class StoriesController < ApplicationController
     # Instead of calling `update_attributes`, you call `draft_update` to save it as a draft
     if @story.draft_update
       flash[:success] = 'A draft of the story update was saved successfully.'
-      redirect_to storys_path
+      redirect_to story_path
     else
       flash[:error] = 'There was an error updating the story. Please review the errors below and try again.'
       render :edit
