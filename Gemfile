@@ -12,12 +12,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'annotate'
 gem "mini_magick"
+gem "friendly_id"
+gem "cells"
+gem "gritter"
 gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 gem 'rollbar', '~> 1.4.4'
 gem "paranoia", "~> 2.0"
 
+gem "letter_opener"
+gem "activeadmin"
+
 # Admin
+gem "cancan"
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise_invitable'
