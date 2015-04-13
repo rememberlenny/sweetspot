@@ -30,22 +30,21 @@ class StoriesController < ApplicationController
       end
       if !attachment_url(photo, :image).nil?
         url = attachment_url(photo, :image, :fill, 100, 100) + '.jpeg'
-      else
-        url = ''
-      end
-      if !photo.id.nil?
-        node = {
-          name: url,
-          group: photo.id - first_id
-        }
-        nodes << node
-        photo.hotspots.each do |hotspot|
-          link = {
-            source: photo.id - first_id,
-            target: hotspot.destination.to_i - first_id,
-            value: 1
+
+        if !photo.id.nil?
+          node = {
+            name: url,
+            group: photo.id - first_id
           }
-          links << link
+          nodes << node
+          photo.hotspots.each do |hotspot|
+            link = {
+              source: photo.id - first_id,
+              target: hotspot.destination.to_i - first_id,
+              value: 1
+            }
+            links << link
+          end
         end
       end
     end
