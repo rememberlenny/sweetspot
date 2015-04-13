@@ -4,6 +4,22 @@
 
 $hotpink: #e44d90;
 
+.container{
+position: relative;
+}
+
+.story-container{
+    overflow: hidden;
+    position: relative;
+}
+
+.text-content{
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+}
+
 .index-block{
     img{
         max-width: 100%;

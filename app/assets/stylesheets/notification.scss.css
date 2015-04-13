@@ -1,0 +1,12 @@
+.alert{
+  top: 0px;
+  z-index: 100;
+  width: 90%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.home .alert{
+  position: absolute;
+}
