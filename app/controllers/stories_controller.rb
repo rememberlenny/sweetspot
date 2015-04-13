@@ -28,9 +28,14 @@ class StoriesController < ApplicationController
       else
         name = 'Unnamed'
       end
+      if !attachment_url(photo, :image).nil?
+        url = attachment_url(photo, :image) + '.jpeg'
+      else
+        url = ''
+      end
       if !photo.id.nil?
         node = {
-          name: name,
+          name: url,
           group: photo.id - first_id
         }
         nodes << node
