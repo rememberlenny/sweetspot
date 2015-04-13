@@ -6,10 +6,12 @@
   <div class="">
     <% @stories.each do |story| %>
       <div class="col-md-4 image-wrapper">
-        <%= link_to path_path(story.id) do %>
+        <%= link_to story_path(story) do %>
         <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300)  %>
         <% end %>
+        <%= link_to story_path(story) do %>
         <h3 class="story-text"><%= story.name %></h3>
+        <% end %>
       </div>
     <% end %>
   </div>
