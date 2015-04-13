@@ -21,7 +21,6 @@ gem 'rollbar', '~> 1.4.4'
 gem "paranoia", "~> 2.0"
 
 gem "letter_opener"
-gem "activeadmin"
 
 # Admin
 gem "cancan"
