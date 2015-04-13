@@ -1,6 +1,9 @@
 <%= render 'stories/create_block'%>
 <% @stories.each do |story| %>
   <div class="col-md-6">
+    <div class="background-image" style="background-image:url('<%= get_featured_photo story %>')">
+
+    </div>
     <h5>Updated <%= time_ago_in_words(story.updated_at) %></h5>
     <h3><%= story.name %></h3>
     <hr>
