@@ -29,7 +29,7 @@ class StoriesController < ApplicationController
         name = 'Unnamed'
       end
       if !attachment_url(photo, :image).nil?
-        url = attachment_url(photo, :image) + '.jpeg'
+        url = attachment_url(photo, :image, :fill, 100, 100) + '.jpeg'
       else
         url = ''
       end

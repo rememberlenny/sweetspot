@@ -1,5 +1,6 @@
-<div>
+<div style="position: relative;">
   <div class="d3container"></div>
+  <div class="d3pointImage" style="width: 100px; height: 100px; position: absolute; top: 0px; left: 0px;"></div>
 </div>
 <script>
   var network_data = "<%= network_url(@story) %>";
@@ -54,7 +55,7 @@ d3.json(network_data, function(error, graph) {
       .attr("r", 5)
       .style("fill", function(d) { return color(d.group); })
       .on("mouseover", mouseover)
-      .on("mouseout", mouseout)
+      .on("click", click)
       .call(force.drag);
 
   node.append("text")
@@ -73,13 +74,16 @@ d3.json(network_data, function(error, graph) {
   });
 
   function mouseover() {
-    var title = d3.select(this)[0][0]['textContent'];
-    console.log('mouseover() { ', title);
+    click();
+  }
+
+  function click() {
+    var url = d3.select(this)[0][0]['textContent'];
+    $('.d3pointImage').html('<img src="' + url + '">')
   }
 
   function mouseout() {
-    var title = d3.select(this)[0][0]['textContent'];
-    console.log('mouseout() { ', title);
+
   }
 
 });
