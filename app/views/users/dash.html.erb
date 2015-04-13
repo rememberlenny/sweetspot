@@ -6,14 +6,14 @@
     <div class="clearfix"></div>
     <div class="col-md-1"></div>
     <div class="col-md-10 content-column">
-      <div class="col-md-4">
+      <div class="col-md-3 side-nav-items">
         <ul class="list-unstyled">
-          <li>Test</li>
-          <li>123</li>
-          <li>gda</li>
+          <li><%= link_to 'Your stories', root_path, :class => 'current' %></li>
+          <li><%= link_to 'Your photos', root_path %></li>
+          <li><%= link_to 'gda', root_path %></li>
         </ul>
       </div>
-      <div class="col-md-8 content-holder">
+      <div class="col-md-9 content-holder">
         <div class="messaging">
           <h3>You don’t have any stories!</h3>
 
