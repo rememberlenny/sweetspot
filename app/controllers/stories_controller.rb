@@ -17,33 +17,37 @@ class StoriesController < ApplicationController
   def network
     nodes = []
     links = []
+    i = 0
 
     @story.films.each do |photo|
-      if !@story.name.nil?
-        name = @story.name
+      if !photo.title.blank?
+        name = photo.title
       else
         name = 'Unnamed'
       end
-      node = {
-        name: name,
-        group: photo.id
-      }
-      nodes << node
-      photo.hotspots.each do |hotspot|
-        link = {
-          source: photo.id,
-          target: hotspot.destination.to_i,
-          value: 1
+      if !photo.id.nil?
+        node = {
+          name: name,
+          group: photo.id
         }
-        links << link
+        nodes << node
+        photo.hotspots.each do |hotspot|
+          link = {
+            source: photo.id,
+            target: hotspot.destination.to_i,
+            value: 1
+          }
+          links << link
+        end
       end
     end
+
     datas = {
       nodes: nodes,
       links: links
     }
 
-    render json: datas.to_json
+    render json: datas
   end
 
   def index
