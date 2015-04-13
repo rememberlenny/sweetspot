@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def dash
+
+  end
+
   # GET /users/:id/edit
   def edit
     # authorize! :update, @user

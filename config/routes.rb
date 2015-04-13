@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   match 'stories/:id/path',     to: 'stories#path',     via: [:get], as: :path
   match 'stories/:id/network',  to: 'stories#network',  via: [:get], as: :network
 
+  match 'dash',                 to: 'users#dash',       via: [:get], as: :dash
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
