@@ -12,6 +12,9 @@
 #  groups_id      :integer
 #  featured_photo :integer
 #  first_slide    :integer
+#  draft_id       :integer
+#  published_at   :datetime
+#  trashed_at     :datetime
 #
 # Indexes
 #
@@ -21,6 +24,7 @@
 
 class Story < ActiveRecord::Base
   # acts_as_paranoid
+  has_drafts
   has_many :films
   has_many :groups
 end

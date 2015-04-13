@@ -12,6 +12,9 @@
 #  groups_id      :integer
 #  featured_photo :integer
 #  first_slide    :integer
+#  draft_id       :integer
+#  published_at   :datetime
+#  trashed_at     :datetime
 #
 # Indexes
 #
