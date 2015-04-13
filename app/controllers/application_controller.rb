@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   # before_action :authenticate_user!
   before_filter :ensure_signup_complete, only: [:new, :create, :update]
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   protected
 
   def ensure_signup_complete
