@@ -7,14 +7,18 @@ var app = app || {};
 
 (function(){
 
-    $(document).ready(function(){
-      if($('.path-type').length > 0){
-        init();
-      }
+    
+    //listen for turbolink page change to kick off app
+    $(document).on("page:change", function() {
+        console.log('page change');
+        if($('.path-type').length > 0){
+            app.init();
+        }
     });
 
+
     //function to kick off the app
-    function init(){
+    app.init = function(){
         $(".navbar").hide();
         $container = $('.container');
         $container.empty();
