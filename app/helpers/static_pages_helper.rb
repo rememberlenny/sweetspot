@@ -6,4 +6,20 @@ module StaticPagesHelper
       return url
     end
   end
+
+  def contact
+
+  end
+
+  def terms
+
+  end
+
+  def privacy
+
+  end
+
+  def submission
+
+  end
 end

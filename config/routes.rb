@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'contact',    to: 'static_pages#contact'
+  get 'terms',      to: 'static_pages#terms'
+  get 'privacy',    to: 'static_pages#privacy'
+  get 'submission', to: 'static_pages#submission'
   match 'stories/:id/path',     to: 'stories#path',     via: [:get], as: :path
   match 'stories/:id/network',  to: 'stories#network',  via: [:get], as: :network
 
