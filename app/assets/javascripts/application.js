@@ -14,4 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require refile
+//= require vendor/underscore-min
+//= require vendor/backbone-min
+//= require path/router
+//= require_directory ./path/models
+//= require_directory ./path/collections
+//= require_directory ./path/views
 //= require_tree .
