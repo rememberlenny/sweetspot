@@ -13,7 +13,6 @@ app.StoryModel = Backbone.Model.extend({
 
         //check to see if the back button should be enabled
         if (this.collection.previousImages.length > 0) {
-            console.log("more than 0")
             this.set({showBack: true});
         } else {
             this.set({showBack: false});

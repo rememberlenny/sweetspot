@@ -11,7 +11,6 @@ app.PhotoView = Backbone.View.extend({
     sweetspotTemplate: _.template("<div data-destination='<%= destination%>' class='hotspot' style='left: <% print(Math.round(coordinates[1] * 100)) %>%; top: <% print(Math.round(coordinates[0] * 100)) %>%;'></div>"),
     render: function() {
         var info = app.storyData.story;
-        console.log(info);
         this.$el.html(this.template({story: this.model.toJSON(), info: info}));
         this.renderSweetspots();
         return this;
@@ -19,7 +18,6 @@ app.PhotoView = Backbone.View.extend({
     renderSweetspots: function() {
         var _this = this;
         _.each(this.model.get("sweetspots"), function(sweetspot) {
-            console.log(sweetspot);
             _this.$el.append(_this.sweetspotTemplate(sweetspot));
         });
     },
@@ -36,7 +34,6 @@ app.PhotoView = Backbone.View.extend({
 
         var newImgName = $target.data('destination');
         Backbone.trigger("show:image", $target.data('destination'));
-        console.log(newImgName);
 
 
     },

@@ -8,9 +8,8 @@ var app = app || {};
 (function(){
 
     
-    //listen for turbolink page change to kick off app
+    //listen for turbolink page change to kick to kick off app
     $(document).on("page:change", function() {
-        console.log('page change');
         if($('.path-type').length > 0){
             app.init();
         }

@@ -3,7 +3,6 @@ app = app || {}
 app.StoryView = Backbone.View.extend({
 
     initialize: function() {
-        console.log("running app view");
         this.listenTo(this.collection, "change:isActive", this.onActiveChange);
     },
 
@@ -22,7 +21,6 @@ app.StoryView = Backbone.View.extend({
     },
 
     onActiveChange: function(changedModel) {
-        console.log(changedModel);
         if (changedModel.get("isActive")) {
             this.showPhoto(changedModel);
         } else {
