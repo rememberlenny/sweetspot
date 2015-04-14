@@ -125,7 +125,7 @@ class StoriesController < ApplicationController
         @featured_image = @story.films.first
       end
     end
-    if !@story.featured_photo.nil?
+    if !@story.featured_photo.blank?
       @featured_image = Film.find(@story.featured_photo.to_i)
     end
     respond_to do |format|
