@@ -6,6 +6,7 @@ app.StoryCollection = Backbone.Collection.extend({
         this.listenTo(Backbone, "show:image", this.onShowImage);
         this.listenTo(Backbone, "route:home", this.setFirstImage);
         this.listenTo(Backbone, "route:photo", this.onShowImage);
+        this.listenTo(Backbone, "goBack", this.onBack);
     },
     model: app.StoryModel,
     setFirstImage: function() {
@@ -22,9 +23,16 @@ app.StoryCollection = Backbone.Collection.extend({
         var oldModel = this.findWhere({isActive: true});
         if (oldModel !== undefined) {
             oldModel.set({isActive: false});
+            this.previousImages.push(oldModel);
         }
         //set new model to active
-        console.log(idNum);
         this.findWhere({id: idNum}).set({isActive: true});
-    }
+    },
+    
+    onBack: function(){
+        this.findWhere({isActive: true}).set({isActive: false});
+        this.previousImages.pop().set({isActive: true});
+    },
+
+    previousImages: []
 });
