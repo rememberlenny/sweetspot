@@ -41,7 +41,7 @@ class HotspotsController < ApplicationController
   private
     def set_hotspot
       @story = Story.find(params[:story_id])
-      @film = @story.films.find(params[:film_id])
+      @film = Film.find(params[:film_id])
       @hotspot = Hotspot.find(params[:id])
     end
 
