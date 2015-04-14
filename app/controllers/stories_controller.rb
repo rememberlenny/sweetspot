@@ -120,8 +120,10 @@ class StoriesController < ApplicationController
 
   def show
     @featured_image = ''
-    if !@story.films.first.image.nil?
-      @featured_image = @story.films.first
+    if !@story.films.first.nil?
+      if !@story.films.first.image
+        @featured_image = @story.films.first
+      end
     end
     if !@story.featured_photo.nil?
       @featured_image = Film.find(@story.featured_photo.to_i)
