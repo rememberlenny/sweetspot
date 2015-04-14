@@ -1,10 +1,9 @@
 <div class="content-wrapper">
   <div class="col-md-8">
     <div class="image-container">
-      <%= embed_code(@story, 800).html_safe %>
+      <%= embed_code(@story, false, 800).html_safe %>
       <input class="col-md-12" onClick="this.setSelectionRange(0, this.value.length)" value="<%= embed_code(@story) %>">
     </div>
-
   </div>
   <div class="col-md-4">
     <h1><%= @story.name %></h1>
