@@ -15,6 +15,7 @@
 #  draft_id       :integer
 #  published_at   :datetime
 #  trashed_at     :datetime
+#  user_id        :integer
 #
 # Indexes
 #
