@@ -119,7 +119,7 @@ class StoriesController < ApplicationController
   end
 
   def show
-    
+
     @featured_image = ''
     if !@story.films.first.nil?
       if !@story.films.first.image
@@ -187,6 +187,6 @@ private
   end
 
   def story_params
-    params.require(:story).permit(:name, :first_slide, :featured_photo, :blurb, :byline)
+    params.require(:story).permit(:story_id, :name, :first_slide, :featured_photo, :blurb, :byline)
   end
 end
