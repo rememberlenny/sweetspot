@@ -12,6 +12,9 @@
 
     <%= link_to 'View Fullscreen Story', path_path(@story.id), class: 'btn btn-primary btn-lg' %>
     <%= link_to 'Back', stories_path, class: 'btn btn-default' %>
+    <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_story_path, class: 'btn btn-default' %>
+    <% end %>
     <hr>
     <%= render 'stories/network' %>
     <hr>
