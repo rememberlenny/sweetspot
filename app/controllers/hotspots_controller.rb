@@ -22,10 +22,9 @@ class HotspotsController < ApplicationController
   end
 
   def create
-    @film = Film.find(params[:film_id])
     @hotspot = @film.hotspots.new(hotspot_params)
     @hotspot.save
-    respond_with(@film)
+    respond_with(@story, @film)
   end
 
   def update
@@ -34,14 +33,15 @@ class HotspotsController < ApplicationController
   end
 
   def destroy
-    @film = Film.find(params[:film_id])
     @hotspot = @film.hotspots.find(params[:id])
     @hotspot.destroy
-    respond_with(@film)
+    respond_with(@story, @film)
   end
 
   private
     def set_hotspot
+      @story = Story.find(params[:story_id])
+      @film = @story.films.find(params[:film_id])
       @hotspot = Hotspot.find(params[:id])
     end
 
