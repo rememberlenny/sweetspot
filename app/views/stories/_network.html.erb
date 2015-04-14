@@ -79,7 +79,7 @@ d3.json(network_data, function(error, graph) {
 
   function click() {
     var url = d3.select(this)[0][0]['textContent'];
-    $('.d3message').html('<img src="' + url + '">')
+    $('.d3pointImage').html('<img src="' + url + '">')
   }
 
   function mouseout() {
