@@ -140,6 +140,8 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @story.user_id = current_user.id
+    @story.save
     respond_with(@story)
   end
 
@@ -148,7 +150,6 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-
     if @story.draft_creation
       flash[:success] = 'A draft of the new story was saved successfully.'
       redirect_to story_path(@story)
@@ -187,6 +188,6 @@ private
   end
 
   def story_params
-    params.require(:story).permit(:story_id, :name, :first_slide, :featured_photo, :blurb, :byline)
+    params.require(:story).permit(:user_id, :name, :first_slide, :featured_photo, :blurb, :byline)
   end
 end
