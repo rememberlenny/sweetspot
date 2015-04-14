@@ -2,20 +2,20 @@ var app = app || {};
 
 app.StoryCollection = Backbone.Collection.extend({
     initialize: function() {
-        
         this.listenTo(Backbone, "show:image", this.onShowImage);
-        this.listenTo(Backbone, "route:home", this.setFirstImage);
+        this.listenTo(Backbone, "route:home", this.showFirstImage);
         this.listenTo(Backbone, "route:photo", this.onShowImage);
         this.listenTo(Backbone, "goBack", this.onBack);
     },
     model: app.StoryModel,
     setFirstImage: function() {
-        var selectedPhoto = this.findWhere({id: app.storyData.story.first_slide});
-        if (!selectedPhoto == undefined) {
-            selectedPhoto.set({isActive: true});
-        } else {
-            this.models[0].set({isActive: true});
+        this.selectedPhoto = this.findWhere({id: app.storyData.story.first_slide});
+        if (this.selectedPhoto == undefined) {
+            this.selectedPhoto = this.models[0];
         }
+    },
+    showFirstImage: function() {
+        this.selectedPhoto.set({isActive: true});
     },
     onShowImage: function(idNum) {
         idNum = parseInt(idNum);

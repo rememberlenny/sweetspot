@@ -7,14 +7,12 @@ app.PhotoView = Backbone.View.extend({
         this.render();
     },
     className: "story-image",
-    template: _.template("<div class='story-image-control <% if(!story.showBack) { %>hide <% } %>'><div class='back-button'></div></div><% if(isIntro) {%> <div class='story-info'><h1 class'story-title'> <%=info.name%></h1><h3><%=info.blurb%></h3><h3><%=info.byline%></h3></div><% } %><img src='<%= story.image_url %>' >"),
+    template: _.template("<div class='story-image-control <% if(!story.showBack) { %>hide <% } %>'><div class='back-button'></div></div><% if(story.titleScreen) {%> <div class='story-info'><h1 class'story-title'> <%=info.name%></h1><h3><%=info.blurb%></h3><h3><%=info.byline%></h3></div><% } %><img src='<%= story.image_url %>' >"),
     sweetspotTemplate: _.template("<div data-destination='<%= destination%>' class='hotspot' style='left: <% print(Math.round(coordinates[1] * 100)) %>%; top: <% print(Math.round(coordinates[0] * 100)) %>%;'></div>"),
     render: function() {
-        var info = {
-            blurb: "",
-            byline: ""
-        };
-        this.$el.html(this.template({story: this.model.toJSON(), info: info, isIntro: false}));
+        var info = app.storyData.story;
+        console.log(info);
+        this.$el.html(this.template({story: this.model.toJSON(), info: info}));
         this.renderSweetspots();
         return this;
     },
