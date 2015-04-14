@@ -144,7 +144,7 @@ class StoriesController < ApplicationController
 
     if @story.draft_creation
       flash[:success] = 'A draft of the new story was saved successfully.'
-      redirect_to story_path
+      redirect_to story_path(@story)
     else
       flash[:error] = 'There was an error creating the story. Please review the errors below and try again.'
       render :new
