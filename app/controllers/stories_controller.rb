@@ -119,9 +119,11 @@ class StoriesController < ApplicationController
   end
 
   def show
-    if @story.featured_photo.nil?
+    @featured_image = ''
+    if !@story.films.first.image.nil?
       @featured_image = @story.films.first
-    else
+    end
+    if !@story.featured_photo.nil?
       @featured_image = Film.find(@story.featured_photo.to_i)
     end
     respond_to do |format|
