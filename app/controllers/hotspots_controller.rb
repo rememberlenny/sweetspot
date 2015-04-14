@@ -14,6 +14,8 @@ class HotspotsController < ApplicationController
   end
 
   def new
+    @story = Story.find(params[:story_id])
+    @film = Film.find(params[:film_id])
     @hotspot = Hotspot.new
     respond_with(@hotspot)
   end
@@ -22,6 +24,8 @@ class HotspotsController < ApplicationController
   end
 
   def create
+    @story = Story.find(params[:story_id])
+    @film = Film.find(params[:film_id])
     @hotspot = @film.hotspots.new(hotspot_params)
     @hotspot.save
     respond_with(@story, @film)
