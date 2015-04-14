@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <div class="col-md-8">
     <div class="image-container">
-      <%= image_tag attachment_url(@featured_image, :image, :fill, 700, 500)  %>
+      <%= embed_code(@story, 800).html_safe %>
       <input class="col-md-12" onClick="this.setSelectionRange(0, this.value.length)" value="<%= embed_code(@story) %>">
     </div>
 
@@ -11,7 +11,7 @@
     <p class="byline"><%= @story.byline %></p>
     <p><%= @story.blurb %></p>
 
-    <%= link_to 'View Story', path_path(@story.id), class: 'btn btn-primary' %>
+    <%= link_to 'View Fullscreen Story', path_path(@story.id), class: 'btn btn-primary btn-lg' %>
     <%= link_to 'Back', stories_path, class: 'btn btn-default' %>
     <hr>
     <%= render 'stories/network' %>
