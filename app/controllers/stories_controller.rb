@@ -4,8 +4,8 @@ class StoriesController < ApplicationController
 
   include Refile::AttachmentHelper
   before_action :authenticate_user!, :except => [:network, :path, :index, :show, :show_json]
-
-  before_filter :find_story,  :only => [:network, :show, :edit, :update, :destroy]
+  before_filter :find_story_user_access, :only => [:edit, :update, :destroy]
+  before_filter :find_story,  :only => [:network, :show]
   before_filter :reify_story, :only => [:show, :edit]
 
   respond_to :html, :json
@@ -174,6 +174,20 @@ class StoriesController < ApplicationController
   end
 
 private
+
+  def find_story_user_access
+    @story = Story.live.find(params[:id])
+    @film = @story.films.new
+    @films = @story.films.all
+
+    if current_user.nil?
+      redirect_to new_user_session_path
+    else
+      if @story.user_id != current_user.id
+        redirect_to stories_path
+      end
+    end
+  end
 
   # Finds non-trashed widget by `params[:id]`
   def find_story
