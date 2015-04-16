@@ -13,9 +13,9 @@
   <tbody>
     <% @films.each do |film| %>
       <tr>
-        <th><%= link_to film.id, [@story, film] %> </th>
-        <td><%= link_to image_tag(attachment_url(film, :image, :fill, 250, 150)), [@story, film] %></td>
-        <td><%= link_to film.title, [@story, film] %></td>
+        <th><%= link_to film.id, edit_story_film_path(@story.id, film) %> </th>
+        <td><%= link_to image_tag(attachment_url(film, :image, :fill, 250, 150)), edit_story_film_path(@story.id, film) %></td>
+        <td><%= link_to film.title, edit_story_film_path(@story.id, film) %></td>
         <td><%= link_to 'Edit', edit_story_film_path(@story.id, film) %> | <%= link_to 'Destroy', [@story, film], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

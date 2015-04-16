@@ -1,17 +1,15 @@
 class FilmsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show]
-  before_action :set_film_user_confirm, only: [:edit, :update, :destroy]
-  before_action :set_film, only: [:show]
+  # before_action :authenticate_user!, :except => [:show]
+  before_action :set_film, only: [:show, :edit, :update, :destroy]
+  before_filter :force_story_path, only: [:show, :index]
 
-  # GET /films
-  # GET /films.json
-  def index
-    @films = Film.all
+  def show
   end
 
   # GET /films/1
   # GET /films/1.json
   def show
+    redirect_to story_path
   end
 
   # GET /films/new
@@ -66,18 +64,21 @@ class FilmsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_film_user_confirm
+
+    def force_story_path
       @story = Story.find(params[:story_id])
-      if @story.user_id != current_user.id
-        redirect_to story_path
+      if current_user.nil? || @story.user_id != current_user.id
+        redirect_to story_path(@story)
+      else
+        redirect_to edit_story_path(@story)
       end
-      @film = Film.find(params[:id])
-      @hotspot = @film.hotspots.new
-      @hotspots = @film.hotspots.all
     end
 
     def set_film
       @story = Story.find(params[:story_id])
+      if @story.user_id != current_user.id
+        redirect_to story_path
+      end
       @film = Film.find(params[:id])
       @hotspot = @film.hotspots.new
       @hotspots = @film.hotspots.all

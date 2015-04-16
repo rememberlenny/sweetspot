@@ -64,7 +64,11 @@ class UsersController < ApplicationController
 
     def user_params
       accessible = [ :email ]
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
+      accessible << [ :password ] unless params[:user][:password].blank?
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+          params[:user].delete(:password)
+          params[:user].delete(:password_confirmation)
+      end
       params.require(:user).permit(accessible)
     end
 end
