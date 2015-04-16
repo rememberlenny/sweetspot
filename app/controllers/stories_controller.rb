@@ -184,7 +184,7 @@ private
       redirect_to new_user_session_path
     else
       if @story.user_id != current_user.id
-        redirect_to stories_path
+        redirect_to story_path
       end
     end
   end
