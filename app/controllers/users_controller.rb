@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy, :finish_signup]
 
+  include Refile::AttachmentHelper
+
   # GET /users/:id.:format
   def show
     # authorize! :read, @user
