@@ -49,6 +49,12 @@
 
 class User < ActiveRecord::Base
   has_many :groups
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+  validates :username, length: { maximum: 18 },
+                    uniqueness: { case_sensitive: false }
   # acts_as_paranoid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
