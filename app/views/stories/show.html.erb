@@ -15,7 +15,7 @@
     <% if !current_user.nil? && current_user.id === @story.user_id %>
       <%= link_to 'Edit', edit_story_path, class: 'btn btn-default' %>
     <% end %>
-    <%= get_user_image %>
+    <%= get_user_image(@story) %>
     <hr>
     <%= render 'stories/network' %>
     <hr>
