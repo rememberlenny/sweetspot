@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
                             :email,
                             :password,
                             :image,
+                            :image_id,
                             :image_cache_id,
                             :remove_image
                           ]
