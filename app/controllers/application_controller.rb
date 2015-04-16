@@ -29,7 +29,10 @@ class ApplicationController < ActionController::Base
                             :facebook_personal,
                             :username,
                             :email,
-                            :password
+                            :password,
+                            :image,
+                            :image_cache_id,
+                            :remove_image
                           ]
 
     if params[:action] == 'update'

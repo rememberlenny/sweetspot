@@ -36,6 +36,7 @@
 #  twitter_personal       :string
 #  flickr_personal        :string
 #  facebook_personal      :string
+#  image_id               :string
 #
 # Indexes
 #
@@ -66,6 +67,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+
+  attachment :image
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 

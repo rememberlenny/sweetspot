@@ -36,6 +36,7 @@
 #  twitter_personal       :string
 #  flickr_personal        :string
 #  facebook_personal      :string
+#  image_id               :string
 #
 # Indexes
 #
