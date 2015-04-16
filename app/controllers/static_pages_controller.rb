@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
       render :dash
     else
       @stories = Story.live
+      @featured_stories = Story.where(featured_story: true).limit(6)
     end
   end
 end

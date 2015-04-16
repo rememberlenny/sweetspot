@@ -14,6 +14,10 @@ class StoriesController < ApplicationController
 
   end
 
+  def featured_stories
+    @featured_stories = Story.where(featured_story: true)
+  end
+
   def network
     nodes = []
     links = []

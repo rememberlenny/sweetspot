@@ -1,5 +1,4 @@
 module StoriesHelper
-
   def embed_code story, chrome = true, width = nil
     if chrome == false
       chrome_status = 'chromestatus=false&'

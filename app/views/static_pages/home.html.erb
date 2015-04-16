@@ -3,3 +3,9 @@
 <%= render 'partial/home_hero' %>
 
 <%= render 'stories/index' %>
+
+<% featured_stories = featured_stories() %>
+
+<% @featured_stories.each do |featured_story| %>
+<%= featured_story %>
+<% end %>

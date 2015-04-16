@@ -1,5 +1,5 @@
 class AddFeaturedStoriesToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :featured_story, :boolean
+    add_column :stories, :featured_story, :boolean
   end
 end
