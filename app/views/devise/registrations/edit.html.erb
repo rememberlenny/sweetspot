@@ -2,16 +2,6 @@
 <div class="col-md-8">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>Settings</h4>
-    </div>
-    <div class="panel-body">
-
-    </div>
-  </div>
-</div>
-<div class="col-md-4">
-  <div class="panel panel-default">
-    <div class="panel-heading">
       <h4><%= t('.title', :resource => resource_class.model_name.human , :default => 'Edit #{resource_name.to_s.humanize}') %></h4>
     </div>
     <div class="panel-body">
@@ -24,10 +14,20 @@
           <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i><br />
           <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
         </div>
-        <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %></div>
+        <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Settings</h4>
+    </div>
+    <div class="panel-body">
+      <%= link_to "Back", :back, :class=>'btn btn-default' %>
 
-<%= link_to "Back", :back %>
+    </div>
+  </div>
+</div>
+
