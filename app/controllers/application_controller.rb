@@ -4,12 +4,44 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
   before_filter :ensure_signup_complete, only: [:new, :create, :update]
+  before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
 
   protected
+
+  def configure_devise_permitted_parameters
+    registration_params = [
+                            :name_first,
+                            :name_last,
+                            :account_type,
+                            :location,
+                            :biography,
+                            :postal_address,
+                            :disqus,
+                            :website_personal,
+                            :email_personal,
+                            :instagram_personal,
+                            :twitter_personal,
+                            :flickr_personal,
+                            :facebook_personal,
+                            :username,
+                            :email,
+                            :password
+                          ]
+
+    if params[:action] == 'update'
+      devise_parameter_sanitizer.for(:account_update) {
+        |u| u.permit(registration_params << :current_password)
+      }
+    elsif params[:action] == 'create'
+      devise_parameter_sanitizer.for(:sign_up) {
+        |u| u.permit(registration_params)
+      }
+    end
+  end
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
