@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150414232646) do
+ActiveRecord::Schema.define(version: 20150416131422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,20 @@ ActiveRecord::Schema.define(version: 20150414232646) do
     t.string   "unconfirmed_email"
     t.datetime "deleted_at"
     t.integer  "groups_id"
+    t.string   "username"
+    t.string   "name_first"
+    t.string   "name_last"
+    t.string   "account_type"
+    t.string   "location"
+    t.text     "biography"
+    t.text     "postal_address"
+    t.string   "disqus"
+    t.string   "website_personal"
+    t.string   "email_personal"
+    t.string   "instagram_personal"
+    t.string   "twitter_personal"
+    t.string   "flickr_personal"
+    t.string   "facebook_personal"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -121,6 +135,7 @@ ActiveRecord::Schema.define(version: 20150414232646) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["groups_id"], name: "index_users_on_groups_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
 end
