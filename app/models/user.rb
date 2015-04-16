@@ -37,6 +37,7 @@
 #  flickr_personal        :string
 #  facebook_personal      :string
 #  image_id               :string
+#  featured_story         :boolean
 #
 # Indexes
 #
