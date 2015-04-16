@@ -1,6 +1,57 @@
 <h1>Editing Film</h1>
 
-<%= render 'form' %>
+<div class="col-sm-3">
+  <%= render 'form' %>
+</div>
 
-<%= link_to 'Show', [@story, @film] %> |
-<%= link_to 'Back', story_films_path %>
+<div class="col-sm-6">
+  <div>
+    <label for="">Click the image to select a coordinate. </label>
+    <br>
+    <br>
+  </div>
+  <%= image_tag attachment_url(@film, :image), :class => 'image-target' %>
+</div>
+
+
+<div class="col-sm-3">
+  <%= render 'hotspots/form' %>
+  <%= render 'hotspots/index' %>
+</div>
+
+<div class="clearfix"></div>
+<script>
+  var hoverReady = true;
+
+  $('.image-target').on('mousemove', function(event){
+    reportCoordinates(event, this);
+  });
+
+  $('.image-target').on('click', function(event){
+    if($('.image-target').hasClass('hoverReady')){
+      $('.image-target').removeClass('hoverReady');
+    } else {
+      $('.image-target').addClass('hoverReady');
+    }
+  });
+
+  function updateCoordinateDiv(left, top){
+    $('.coord').val('[' + top + ', ' + left + ']');
+  }
+
+  function reportCoordinates(event, tthis){
+    if(!$('.image-target').hasClass('hoverReady')){
+      var left = event.pageX - $(tthis).offset().left;
+      var top = event.pageY - $(tthis).offset().top;
+      var w = $('.image-target').width();
+      var h = $('.image-target').height();
+      if(left/w !== undefined){
+        w = left/w;
+      }
+      if(top/h !== undefined){
+        h = top/h;
+      }
+      updateCoordinateDiv(w.toFixed(4), h.toFixed(4));
+    }
+  }
+</script>
