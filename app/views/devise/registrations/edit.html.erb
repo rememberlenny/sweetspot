@@ -24,6 +24,27 @@
           <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it") %>)</i><br />
           <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
         </div>
+
+        <div class="form-group">
+          <%= f.label :account_type %>
+          <%= f.text_field :account_type, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :location %>
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :biography %>
+          <%= f.text_area :biography, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :postal_address %>
+          <%= f.text_area :postal_address, class: "form-control" %>
+        </div>
+
         <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
       <% end %>
     </div>
