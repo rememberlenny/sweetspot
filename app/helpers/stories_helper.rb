@@ -20,4 +20,11 @@ module StoriesHelper
 
   end
 
+  def get_user_image
+    if !@story.user_id.nil?
+      user = User.find(user_id)
+      image = image_tag attachment_url(user, :image, :fill, 100, 100), :class => "image-target"
+      return image
+    end
+  end
 end
