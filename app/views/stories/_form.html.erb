@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'form-control title', :placeholder => 'Untitled Story' %>
   </div>
   <div class="field">
-    <%= f.label :byline %><br>
-    <%= f.text_area :byline %>
+    <%= f.text_area :byline, :class => 'form-control', :placeholder => 'Add a subtitle' %>
   </div>
   <div class="field">
     <%= f.label :blurb %><br>
-    <%= f.text_area :blurb %>
+    <%= f.text_area :blurb, :class => 'form-control', :placeholder => '' %>
   </div>
   <div class="actions">
     <%= f.submit %>

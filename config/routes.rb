@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'about_process', to: 'onboard#about_process'
-  get 'setup_story', to: 'stories#new'
+  get 'about_process',    to: 'onboard#about_process'
+  get 'setup_story',      to: 'stories#new'
   get 'register_account', to: 'users/registrations#new'
 
   resources :stories do
