@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'onboard/about_process'
+
+  get 'onboard/setup_story'
+
+  get 'onboard/register_account'
+
   get 'static_pages/dash'
 
   resources :stories do
