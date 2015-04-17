@@ -3,21 +3,6 @@
     <h2>Storytelling for Everyone</h2>
     <p>Checkout new, engaging stories for inspiration.</p>
   </div>
-  <div class="">
-    <% @stories.each do |story| %>
-      <div class="col-md-4 image-wrapper">
-        <%= link_to story_path(story) do %>
-          <% if !story.films.first.nil? %>
-            <% if !story.films.first.image.nil? %>
-              <%= image_tag attachment_url(story.films.first, :image, :fill, 400, 300) %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <%= link_to story_path(story) do %>
-          <h3 class="story-text"><%= story.name %></h3>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'stories/featured_stories' %>
   <div class="clearfix"></div>
 </div>
