@@ -4,22 +4,34 @@ input{
   padding: 0.3em .2em;
 }
 
-.clearform{
-  .form-control{
-    font-size: 28px;
-    height: 66px;
-    background: none;
-    color: rgb(51, 51, 51);
-    border: none;
-    text-align: center;
-    box-shadow: none;
-    &:focus{
-      box-shadow: none;
+.form-container-relative{
+  position: relative;
+}
+
+.full-page-form{
+  .submit-fixed-button{
+    position: fixed;
+    top: 1em;
+    right: 1em;
+  }
+
+  .clearform{
+    .form-control{
+      font-size: 28px;
+      height: 66px;
+      background: none;
+      color: rgb(51, 51, 51);
       border: none;
-    }
-    &.title{
-      font-size: 58px;
-      height: 85px;
+      text-align: center;
+      box-shadow: none;
+      &:focus{
+        box-shadow: none;
+        border: none;
+      }
+      &.title{
+        font-size: 58px;
+        height: 85px;
+      }
     }
   }
 }

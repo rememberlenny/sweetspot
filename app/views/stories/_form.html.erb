@@ -1,9 +1,7 @@
 <%= form_for(@story) do |f| %>
 
-  <div class="actions text-right">
-    <%= f.submit :class => 'btn btn-primary btn-lg' %>
-    <span style="margin-right: 1em;"></span>
-  </div>
+  <%= f.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
+
   <div class="col-md-7 col-centered clearform">
     <% if @story.errors.any? %>
       <div id="error_explanation">
