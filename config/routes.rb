@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  get 'onboard/about_process'
-
-  get 'onboard/setup_story'
-
-  get 'onboard/register_account'
-
-  get 'static_pages/dash'
+  get 'about_process', to: 'onboard#about_process'
+  get 'setup_story', to: 'stories#new'
+  get 'register_account', to: 'users/registrations#new'
 
   resources :stories do
     resources :films do
