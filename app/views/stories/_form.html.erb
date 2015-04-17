@@ -1,27 +1,28 @@
 <%= form_for(@story) do |f| %>
-  <% if @story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
 
-      <ul>
-      <% @story.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="actions text-right">
+    <%= f.submit :class => 'btn btn-primary btn-lg' %>
+    <span style="margin-right: 1em;"></span>
+  </div>
+  <div class="col-md-7 col-centered clearform">
+    <% if @story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+        <ul>
+        <% @story.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_field :name, :class => 'form-control title', :placeholder => 'Untitled Story' %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.text_area :byline, :class => 'form-control', :placeholder => 'Add a subtitle' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.text_field :name, :class => 'form-control title', :placeholder => 'Untitled Story' %>
-  </div>
-  <div class="field">
-    <%= f.text_area :byline, :class => 'form-control', :placeholder => 'Add a subtitle' %>
-  </div>
-  <div class="field">
-    <%= f.label :blurb %><br>
-    <%= f.text_area :blurb, :class => 'form-control', :placeholder => '' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
