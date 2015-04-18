@@ -56,21 +56,18 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  # acts_as_paranoid
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  validates :account, presence: true
+  has_one :account
+
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
+
   devise :database_authenticatable, :registerable,
     :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   attachment :image
-
-  has_one :account
   accepts_nested_attributes_for :account
   after_initialize :set_account
 
