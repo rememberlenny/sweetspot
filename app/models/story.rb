@@ -28,7 +28,7 @@ class Story < ActiveRecord::Base
   # acts_as_paranoid
   validates :name, presence: true
   validates :byline, presence: true
-  validates :image_id, presence: true
+  validates :image, presence: true
   has_drafts
   attachment :image
   has_many :films
