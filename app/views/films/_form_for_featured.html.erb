@@ -1,0 +1,30 @@
+<%= form_for([@story, @film]) do |f| %>
+  <% if @film.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@film.errors.count, "error") %> prohibited this film from being saved:</h2>
+
+      <ul>
+      <% @film.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.attachment_field :image, direct: true %>
+
+    <div id="image"></div>
+
+    <% if @film.image_id? %>
+      <%= image_tag attachment_url(@film, :image, :fill, 100, 100) %>
+      <%= f.check_box :remove_image %>
+      <%= f.label :remove_image %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Photo", class: "btn btn-primary" %>
+  </div>
+<% end %>

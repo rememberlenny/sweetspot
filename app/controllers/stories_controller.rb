@@ -145,8 +145,11 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @story.user_id = current_user.id
+    @film = @story.films.new
     @story.save
+    @film.save
     respond_with(@story)
+
   end
 
   def edit
@@ -167,7 +170,8 @@ class StoriesController < ApplicationController
 
     @story.update(story_params)
     @story.attributes = story_params
-    respond_with(@story)
+    # respond_with(@story)
+    redirect_to edit_story_path(@story)
   end
 
   def destroy
