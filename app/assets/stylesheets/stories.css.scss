@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div.story-container{
+    background: black;
+    padding: 0px;
+    .background-image{
+        min-height: 500px;
+        opacity: .4;
+    }
+    .text-content{
+        color: white;
+    }
+}
+
+
+
 .story-index{
     margin-top: 5%;
 }
