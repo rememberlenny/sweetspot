@@ -19,7 +19,6 @@ gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 gem 'rollbar', '~> 1.4.4'
 gem "paranoia", "~> 2.0"
-gem "apartment"
 gem 'paper_trail', '~> 4.0.0.beta'
 
 gem "letter_opener"
