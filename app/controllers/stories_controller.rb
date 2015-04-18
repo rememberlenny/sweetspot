@@ -70,7 +70,7 @@ class StoriesController < ApplicationController
     # hitting your database for each draft.
     @featured_stories = Story.where(:featured_story => true)
 
-    @stories = @account.stories.all
+    @stories = @featured_stories
     # Load drafted versions of each widget
     # @stories.map! { |story| story.draft.reify if story.draft? }
     respond_with(@stories)
