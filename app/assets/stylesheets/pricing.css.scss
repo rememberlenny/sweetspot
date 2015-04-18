@@ -13,7 +13,9 @@ a.free-tier:hover{
   padding-bottom: 50px;
 }
 
-.pricing-element:hover{
+.pricing-element{
   padding-bottom: 2em;
-  background: rgba(173, 216, 230, .3);
+  &:hover{
+    background: rgba(173, 216, 230, .3);
+  }
 }
