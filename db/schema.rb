@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416163951) do
+ActiveRecord::Schema.define(version: 20150418022423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,13 +83,13 @@ ActiveRecord::Schema.define(version: 20150416163951) do
     t.text     "blurb"
     t.datetime "deleted_at"
     t.integer  "groups_id"
-    t.integer  "featured_photo"
     t.integer  "first_slide"
     t.integer  "draft_id"
     t.datetime "published_at"
     t.datetime "trashed_at"
     t.integer  "user_id"
     t.boolean  "featured_story"
+    t.string   "image_id"
   end
 
   add_index "stories", ["deleted_at"], name: "index_stories_on_deleted_at", using: :btree

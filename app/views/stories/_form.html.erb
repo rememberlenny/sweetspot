@@ -22,7 +22,32 @@
       <%= f.text_area :byline, :class => 'form-control', :placeholder => 'Add a subtitle' %>
     </div>
 
-    <%= render 'films/form_for_featured' %>
+    <% if @story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@story.errors.count, "error") %> prohibited this film from being saved:</h2>
+
+        <ul>
+        <% @story.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.attachment_field :image, direct: true %>
+
+      <div id="image"></div>
+
+      <% if @story.image_id? %>
+        <%= image_tag attachment_url(@story, :image, :fill, 100, 100) %>
+        <%= f.check_box :remove_image %>
+        <%= f.label :remove_image %>
+      <% end %>
+    </div>
+
+
   </div>
 
 <% end %>

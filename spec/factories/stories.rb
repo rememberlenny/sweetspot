@@ -10,13 +10,13 @@
 #  blurb          :text
 #  deleted_at     :datetime
 #  groups_id      :integer
-#  featured_photo :integer
 #  first_slide    :integer
 #  draft_id       :integer
 #  published_at   :datetime
 #  trashed_at     :datetime
 #  user_id        :integer
 #  featured_story :boolean
+#  image_id       :string
 #
 # Indexes
 #
