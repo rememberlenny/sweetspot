@@ -24,7 +24,6 @@
 
 
 $(document).ready(function(){
-  console.log(isSignedIn);
   $(window).on('scroll', function(){
     var isSignedIn = $('body').hasClass('signed-in');
     if(!isSignedIn){
