@@ -2,9 +2,21 @@
   height: 30px;
   width: 77px;
   background: url( asset_path('swt.png'));
+  background-repeat:no-repeat;
   margin: 10px;
-  .black-topnav &{
+  padding-bottom: 2px;
+  box-sizing: content-box;
+  &:hover{
+    border-bottom: 1px solid rgb(0, 0, 0);
+  }
+
+}
+.black-topnav{
+  .branding-icon{
     background: url( asset_path('swt-white.png'));
+    &:hover{
+      border-bottom: 1px solid rgb(255, 255, 255);
+    }
   }
 }
 
