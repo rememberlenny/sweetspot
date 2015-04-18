@@ -1,9 +1,14 @@
 a.free-tier,
 a.free-tier:hover{
-  color: #333;
+  color: rgb(102, 102, 102);
   font-size: 15px;
+  border-bottom: 1px dotted rgb(102, 102, 102);
 }
 
 .free-container{
   padding-top: 2em;
+}
+
+.pricing-block{
+  padding-bottom: 50px;
 }
