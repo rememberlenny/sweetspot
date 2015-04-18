@@ -1,5 +1,6 @@
 class FilmsController < ApplicationController
   # before_action :authenticate_user!, :except => [:show]
+  before_action :require_account!, only: [:show, :edit, :update, :destroy]
   before_action :set_film, only: [:show, :edit, :update, :destroy]
   before_filter :force_story_path, only: [:show, :index]
 

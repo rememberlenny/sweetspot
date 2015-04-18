@@ -1,5 +1,6 @@
 class HotspotsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_account!, only: [:show, :edit, :update, :destroy]
   before_action :set_hotspot, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

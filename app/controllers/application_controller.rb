@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  def require_account!
+    redirect_to root_url(subdomain: 'www') if !@account.present?
+  end
+
   def set_account
     @account = Account.find_by(subdomain: request.subdomain)
   end
