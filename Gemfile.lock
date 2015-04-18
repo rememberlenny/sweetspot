@@ -40,6 +40,9 @@ GEM
     annotate (2.6.8)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
+    apartment (1.0.0)
+      activerecord (>= 3.1.2, < 5.0)
+      rack (>= 1.3.6)
     arel (6.0.0)
     autoprefixer-rails (5.1.8.1)
       execjs
@@ -168,6 +171,9 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
+    paper_trail (4.0.0.beta2)
+      activerecord (>= 3.0, < 6.0)
+      activesupport (>= 3.0, < 6.0)
     paranoia (2.1.1)
       activerecord (~> 4.0)
     pg (0.18.1)
@@ -284,6 +290,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  apartment
   aws-sdk (< 2)
   better_errors
   binding_of_caller
@@ -309,6 +316,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-linkedin
   omniauth-twitter
+  paper_trail (~> 4.0.0.beta)
   paranoia (~> 2.0)
   pg
   pry-rails
