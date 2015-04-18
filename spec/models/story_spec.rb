@@ -15,8 +15,9 @@
 #  published_at   :datetime
 #  trashed_at     :datetime
 #  user_id        :integer
-#  featured_story :boolean
 #  image_id       :string
+#  featured_story :boolean          default(FALSE)
+#  account_id     :integer
 #
 # Indexes
 #

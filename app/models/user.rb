@@ -22,7 +22,6 @@
 #  unconfirmed_email      :string
 #  deleted_at             :datetime
 #  groups_id              :integer
-#  username               :string
 #  name_first             :string
 #  name_last              :string
 #  account_type           :string
@@ -48,7 +47,6 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_groups_id             (groups_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_username              (username) UNIQUE
 #
 
 class User < ActiveRecord::Base
