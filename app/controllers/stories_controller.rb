@@ -65,7 +65,7 @@ class StoriesController < ApplicationController
     # The `live` scope gives us widgets that aren't in the trash.
     # It's also strongly recommended that you eagerly-load the `draft` association via `includes` so you don't keep
     # hitting your database for each draft.
-    @stories = Story.live.includes(:draft).order(:updated_at)
+    @featured_stories = Story.where(:featured_story => true)
 
     # Load drafted versions of each widget
     # @stories.map! { |story| story.draft.reify if story.draft? }
