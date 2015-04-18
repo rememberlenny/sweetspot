@@ -39,18 +39,7 @@
   }
 }
 
-a.navbar-brand {
-  float: none;
-  padding: 0px;
-  font-size: 18px;
-  line-height: 20px;
-  height: 50px;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  margin: 0 auto !important;
-  width: 241px;
-}
+
 
 // Override Bootstrap variables here (defaults from bootstrap-sass v3.3.4):
 
@@ -421,7 +410,7 @@ $navbar-border-radius:             0;
 
 $navbar-default-color:             #666;
 $navbar-default-bg:                #fff;
-// $navbar-default-border:            darken($navbar-default-bg, 6.5%)
+$navbar-default-border:            none;
 
 // Navbar links
 $navbar-default-link-color:                #333;
@@ -440,14 +429,14 @@ $navbar-default-link-color:                #333;
 // Navbar toggle
 // $navbar-default-toggle-hover-bg:           #ddd
 // $navbar-default-toggle-icon-bar-bg:        #888
-// $navbar-default-toggle-border-color:       #ddd
+$navbar-default-toggle-border-color:       none;
 
 
 // Inverted navbar
 // Reset inverted navbar basics
 // $navbar-inverse-color:                      lighten($gray-light, 15%)
 // $navbar-inverse-bg:                         #222
-// $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%)
+$navbar-inverse-border:                     none;
 
 // Inverted navbar links
 // $navbar-inverse-link-color:                 lighten($gray-light, 15%)
