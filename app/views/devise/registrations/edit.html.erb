@@ -76,10 +76,13 @@
     </div>
     <div class="panel-body">
       <h5>
-        <b>Account Access:</b> <%= @user.pay_level.titlecase %>
+        <b>Subscription Access:</b> <%= @user.pay_level.titlecase %>
       </h5>
       <h5>
-        <b>Story Count:</b> <%= Story.where(user_id: @user.id).count %>
+        <b>Next Cycle:</b> <%= @user.pay_level.titlecase %>
+      </h5>
+      <h5>
+        <b>Stories:</b> <%= Story.where(user_id: @user.id).count %>
       </h5>
 
       <%= link_to "Upgrade", :back, :class=>'btn btn-primary' %>
