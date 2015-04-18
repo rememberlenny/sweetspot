@@ -1,12 +1,13 @@
 <h1>Editing Story</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @story.name %>
-</p>
-
 <div class="row">
   <div class="col-md-4">
+    <%= render 'form_photo' %>
+
+    <p>
+      <strong>Name:</strong>
+      <%= @story.name %>
+    </p>
     <h1>New Photo</h1>
     <%= render 'films/form' %>
     <hr>
