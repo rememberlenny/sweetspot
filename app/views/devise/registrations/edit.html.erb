@@ -33,7 +33,7 @@
 
       <%= f.fields_for :account do |a| %>
         <div class="form-group">
-          <%= a.label :subdomain %>
+          <%= a.label :username %>
           <%= a.text_field :subdomain, autofocus: true, class: "form-control" %>
         </div>
       <% end %>
