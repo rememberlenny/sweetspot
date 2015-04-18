@@ -37,6 +37,9 @@
 #  flickr_personal        :string
 #  facebook_personal      :string
 #  image_id               :string
+#  pay_level              :string
+#  pay_start_date         :date
+#  pay_end_date           :date
 #
 # Indexes
 #
