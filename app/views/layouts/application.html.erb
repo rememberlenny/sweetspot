@@ -3,7 +3,7 @@
 
 <%= render 'global/head' %>
 
-<body class="<%= content_for?(:page_type) ? yield(:page_type) : '' %> <%= content_for?(:navclass) ? yield(:navclass) : '' %>">
+<body class="<% if user_signed_in? %><%= 'signed-in' %><% end %> <%= content_for?(:page_type) ? yield(:page_type) : '' %> <%= content_for?(:navclass) ? yield(:navclass) : '' %>">
 
   <%= render 'global/topnav' %>
   <div class="clearfix"></div>
