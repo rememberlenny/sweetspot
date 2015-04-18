@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
   before_action :set_account
+
   before_filter :ensure_signup_complete, only: [:new, :create, :update]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
@@ -38,7 +39,8 @@ class ApplicationController < ActionController::Base
                             :image,
                             :image_id,
                             :image_cache_id,
-                            :remove_image
+                            :remove_image,
+                            account_attributes: [:subdomain]
                           ]
 
     if params[:action] == 'update'
