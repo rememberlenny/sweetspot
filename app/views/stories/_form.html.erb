@@ -22,18 +22,6 @@
       <%= f.text_area :byline, :class => 'form-control', :placeholder => 'Add a subtitle' %>
     </div>
 
-    <% if @story.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@story.errors.count, "error") %> prohibited this film from being saved:</h2>
-
-        <ul>
-        <% @story.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="field">
       <%= f.label :image %><br>
       <%= f.attachment_field :image, direct: true %>
