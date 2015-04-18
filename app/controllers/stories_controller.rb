@@ -123,19 +123,6 @@ class StoriesController < ApplicationController
   end
 
   def show
-
-    @featured_image = ''
-    if !@story.films.first.nil?
-      if !@story.films.first.image
-        @featured_image = @story.films.first
-      end
-    end
-    if !@story.featured_photo.blank?
-      featured_image = Film.where(id: @story.featured_photo.to_i)
-      if featured_image.count > 0
-        @featured_image = featured_image[0]
-      end
-    end
     respond_to do |format|
       format.html
       format.json { render json: show_json(@story.id) }
