@@ -72,9 +72,17 @@
 <div class="col-md-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>Settings</h4>
+      <h4>Status</h4>
     </div>
     <div class="panel-body">
+      <h5>
+        <b>Account Access:</b> <%= @user.pay_level.titlecase %>
+      </h5>
+      <h5>
+        <b>Story Count:</b> <%= Story.where(user_id: @user.id).count %>
+      </h5>
+
+      <%= link_to "Upgrade", :back, :class=>'btn btn-primary' %>
       <%= link_to "Back", :back, :class=>'btn btn-default' %>
     </div>
   </div>
