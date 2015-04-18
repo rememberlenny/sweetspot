@@ -25,8 +25,8 @@
 
 $(document).ready(function(){
   $(window).on('scroll', function(){
-    var isSignedIn = $('body').hasClass('signed-in');
-    if(!isSignedIn){
+    var isSignedIn = $('body').hasClass('home');
+    if(isSignedIn){
       scrollCheck();
     }
   });
