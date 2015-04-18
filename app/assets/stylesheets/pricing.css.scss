@@ -12,3 +12,8 @@ a.free-tier:hover{
 .pricing-block, .question-block{
   padding-bottom: 50px;
 }
+
+.pricing-element:hover{
+  padding-bottom: 2em;
+  background: rgba(173, 216, 230, .3);
+}
