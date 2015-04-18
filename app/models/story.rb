@@ -34,4 +34,5 @@ class Story < ActiveRecord::Base
   attachment :image
   has_many :films
   has_many :groups
+  belongs_to :account
 end
