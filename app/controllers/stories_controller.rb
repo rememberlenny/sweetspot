@@ -69,13 +69,14 @@ class StoriesController < ApplicationController
     # hitting your database for each draft.
     @featured_stories = Story.where(:featured_story => true)
 
+    @stories = @account.stories.all
     # Load drafted versions of each widget
     # @stories.map! { |story| story.draft.reify if story.draft? }
     respond_with(@stories)
   end
 
   def show_json story_id
-    story = Story.find(story_id)
+    story = @account.stories.find(story_id)
     photos = story.films.all
     jphoto = []
 
@@ -135,8 +136,7 @@ class StoriesController < ApplicationController
   end
 
   def new
-    @story = Story.new
-    @story.user_id = current_user.id
+    @story = @account.stories.new
     @film = @story.films.new
 
     respond_with(@story)
@@ -147,7 +147,7 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.new(story_params)
+    @story = @account.stories.new(story_params)
     if @story.draft_creation
       flash[:success] = 'A draft of the new story was saved successfully.'
       redirect_to story_path(@story)
@@ -175,22 +175,14 @@ class StoriesController < ApplicationController
 private
 
   def find_story_user_access
-    @story = Story.live.find(params[:id])
+    @story = @account.stories.live.find(params[:id])
     @film = @story.films.new
     @films = @story.films.all
-
-    if current_user.nil?
-      redirect_to new_user_session_path
-    else
-      if @story.user_id != current_user.id
-        redirect_to story_path
-      end
-    end
   end
 
   # Finds non-trashed widget by `params[:id]`
   def find_story
-    @story = Story.live.find(params[:id])
+    @story = @account.stories.live.find(params[:id])
     @film = @story.films.new
     @films = @story.films.all
   end
