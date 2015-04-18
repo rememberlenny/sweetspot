@@ -72,17 +72,19 @@
 <div class="col-md-4">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4>Status</h4>
+      <h4>Account Status</h4>
     </div>
     <div class="panel-body">
       <h5>
-        <b>Subscription Access:</b> <%= @user.pay_level.titlecase %>
+        <b>Subscription Access:</b> <%= @user.pay_level.titlecase %> tier
       </h5>
+      <% if !@user.pay_date_end.nil? %>
       <h5>
-        <b>Next Cycle:</b> <%= @user.pay_level.titlecase %>
+        <b>Next Billing Date:</b> <%= @user.pay_date_end %>
       </h5>
+      <% end %>
       <h5>
-        <b>Stories:</b> <%= Story.where(user_id: @user.id).count %>
+        <b>Stories:</b> <%= Story.where(user_id: @user.id).count %>/<%= story_count(@user.pay_level) %>
       </h5>
 
       <%= link_to "Upgrade", :back, :class=>'btn btn-primary' %>
