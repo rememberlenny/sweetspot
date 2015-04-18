@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'pricing',    to: 'static_pages#pricing'
   get 'contact',    to: 'static_pages#contact'
   get 'terms',      to: 'static_pages#terms'
   get 'privacy',    to: 'static_pages#privacy'

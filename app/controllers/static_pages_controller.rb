@@ -8,4 +8,8 @@ class StaticPagesController < ApplicationController
       @stories = Story.live
     end
   end
+
+  def pricing
+
+  end
 end
