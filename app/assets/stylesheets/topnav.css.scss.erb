@@ -9,8 +9,34 @@
   &:hover{
     border-bottom: 1px solid rgb(0, 0, 0);
   }
-
 }
+
+nav.navbar{
+  position: fixed;
+  width: 100%;
+  background: white;
+  z-index: 100;
+  transition: background 300ms;
+  -webkit-transition: background 300ms;
+}
+
+.black-topnav{
+  nav.navbar{
+    background: rgba(0,0,0, .4);
+  }
+  .navbar-default .navbar-nav > li > a{
+    color: white;
+  }
+}
+
+.navbar-brand, .navbar-collapse{
+  position: fixed;
+  top: 0px;
+}
+.navbar-collapse{
+  right: 0px;
+}
+
 .black-topnav{
   .branding-icon{
     background: url( asset_path('swt-white.png'));

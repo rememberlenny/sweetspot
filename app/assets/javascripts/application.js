@@ -21,3 +21,17 @@
 //= require_directory ./path/collections
 //= require_directory ./path/views
 //= require_tree .
+
+
+$(window).on('scroll', function(){
+  scrollCheck();
+});
+
+function scrollCheck(){
+  var distance = $(window).scrollTop();
+  if (distance != 0){
+    $('body').addClass('black-topnav');
+  } else {
+    $('body').removeClass('black-topnav');
+  }
+}
