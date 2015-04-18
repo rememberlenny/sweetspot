@@ -55,8 +55,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :username, length: { maximum: 18 },
-                    uniqueness: { case_sensitive: false }
+
   # acts_as_paranoid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -70,6 +69,10 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   attachment :image
+
+  has_one :account
+  accepts_nested_attributes_for :account
+  after_initialize :set_account
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
@@ -118,4 +121,9 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
+
+  private
+    def set_account
+      build_account unless account.present?
+    end
 end

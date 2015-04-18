@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
+  before_action :set_account
   before_filter :ensure_signup_complete, only: [:new, :create, :update]
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+  def set_account
+    @account = Account.find_by(subdomain: request.subdomain)
   end
 
   protected

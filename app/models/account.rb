@@ -14,4 +14,8 @@
 #
 
 class Account < ActiveRecord::Base
+  validates :subdomain, length: { maximum: 18 },
+                      uniqueness: { case_sensitive: false }
+
+  belongs_to :user
 end
