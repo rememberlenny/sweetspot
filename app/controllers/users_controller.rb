@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user = User.friendly.find(params[:id])
     if @user.nil?
       redirect_to root_path
+    else
+      @featured_stories = Story.where(user_id: @user.id)
     end
   end
 
