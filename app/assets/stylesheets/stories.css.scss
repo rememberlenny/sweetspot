@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.black-bg{
+    background: black;
+}
 
 @media only screen and (max-width: 825px) {
   .full-screen-block, .block-text-wrapper{
@@ -30,6 +33,13 @@ div.story-container{
     .background-image{
         min-height: 500px;
         opacity: .4;
+        transition: opacity 300ms;
+        -webkit-transition: opacity 300ms;
+    }
+    &:hover{
+        .background-image{
+            opacity: .8;
+        }
     }
     .text-content{
         color: white;
