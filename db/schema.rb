@@ -94,15 +94,15 @@ ActiveRecord::Schema.define(version: 20150419013246) do
     t.datetime "updated_at",                     null: false
     t.text     "byline"
     t.text     "blurb"
-    t.integer  "first_slide"
     t.datetime "deleted_at"
     t.integer  "groups_id"
+    t.integer  "first_slide"
     t.integer  "draft_id"
     t.datetime "published_at"
     t.datetime "trashed_at"
     t.integer  "user_id"
-    t.boolean  "featured_story", default: false
     t.string   "image_id"
+    t.boolean  "featured_story", default: false
     t.string   "slug"
   end
 

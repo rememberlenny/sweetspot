@@ -1,7 +1,10 @@
 <%= render 'stories/create_block'%>
 
 </div><!-- .container -->
+<div class="clearfix"></div>
 <% @stories.each do |story| %>
+
+
 
   <div class="col-md-6 text-center story-container">
     <div class="background-image" style="width: 100%; z-index: -1; height: 300px; background-size: cover; background-image:url('<%= attachment_url(story, :image, :fill, 570, 300) %>')">
@@ -15,6 +18,8 @@
     </div>
     <div class="clearfix"></div>
   </div>
+  <div class="clearfix"></div>
 <% end %>
+<div class="clearfix"></div>
 
 <div class="container">

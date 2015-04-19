@@ -1,6 +1,9 @@
-<div class="">
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="featured-image-wrapper">
   <% @featured_stories.each do |story| %>
-    <div class="col-md-4 image-wrapper">
+    <div class="col-md-4 image-wrapper col-xs-4">
       <%= link_to story_path(story) do %>
         <% if !story.films.first.nil? %>
           <% if !story.films.first.image.nil? %>
@@ -15,3 +18,4 @@
   <% end %>
   <div class="clearfix"></div>
 </div>
+<div class="container">

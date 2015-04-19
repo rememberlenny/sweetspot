@@ -2,6 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+@media only screen and (max-width: 825px) {
+  .full-screen-block, .block-text-wrapper{
+    position: relative;
+    height: auto;
+  }
+  .photo-hero-explainer-wrapper{
+    img{
+      display: none;
+    }
+  }
+}
+
+.featured-image-wrapper{
+    .col-md-4.image-wrapper {
+      padding: 0px;
+      margin: 0px;
+      img{
+        width: 100%;
+      }
+    }
+}
+
 div.story-container{
     padding: 0px;
     .background-image{
