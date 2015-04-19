@@ -17,11 +17,13 @@
 #  user_id        :integer
 #  featured_story :boolean          default(FALSE)
 #  image_id       :string
+#  slug           :string
 #
 # Indexes
 #
 #  index_stories_on_deleted_at  (deleted_at)
 #  index_stories_on_groups_id   (groups_id)
+#  index_stories_on_slug        (slug) UNIQUE
 #
 
 require 'rails_helper'

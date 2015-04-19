@@ -17,15 +17,19 @@
 #  user_id        :integer
 #  featured_story :boolean          default(FALSE)
 #  image_id       :string
+#  slug           :string
 #
 # Indexes
 #
 #  index_stories_on_deleted_at  (deleted_at)
 #  index_stories_on_groups_id   (groups_id)
+#  index_stories_on_slug        (slug) UNIQUE
 #
 
 class Story < ActiveRecord::Base
   # acts_as_paranoid
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   validates :name, presence: true
   validates :byline, presence: true
   validates :image, presence: true
