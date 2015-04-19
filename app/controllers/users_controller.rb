@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   def show
     # authorize! :read, @user
     @user = User.friendly.find(params[:id])
+    if @user.nil?
+      redirect_to root_path
+    end
   end
 
   def dash
