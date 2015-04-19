@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Payola::Engine => '/payola', as: :payola
   get 'about_process',    to: 'onboard#about_process'
   get 'setup_story',      to: 'stories#new'
   get 'register_account', to: 'users/registrations#new'
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "omniauth_callbacks",
     registrations: 'users/registrations'
   }
-  as: :payola
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   root to: "static_pages#home"
