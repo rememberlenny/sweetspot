@@ -6,7 +6,7 @@ Photo naratives created using hotspots.
 
 ## Setup
 
-Local database runs with postgres.
+https://trello.com/b/XaNJCrHT/sweetspot
 
 ## Authors
 
