@@ -4,4 +4,5 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= render 'global/head_scripts' %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
