@@ -14,7 +14,11 @@ div.story-container{
     }
 }
 
-
+.creating-story{
+    .navbar{
+        visibility: hidden;
+    }
+}
 
 .story-index{
     margin-top: 5%;
