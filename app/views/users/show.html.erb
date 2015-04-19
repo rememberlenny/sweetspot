@@ -1,7 +1,8 @@
   <div class="col-md-2 col-centered">
     <div class="user-info text-center">
-      <%= image_tag attachment_url(@user, :image), :class => 'image-target' %>
-
+      <div class="image-round-wrapper">
+        <%= image_tag attachment_url(@user, :image), :class => 'image-target' %>
+      </div>
       <h1>@<%= @user.username %></h1>
     </div>
   </div>
