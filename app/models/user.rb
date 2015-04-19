@@ -41,6 +41,7 @@
 #  pay_date_start         :date
 #  pay_date_end           :date
 #  slug                   :string
+#  plan_id                :integer
 #
 # Indexes
 #
@@ -48,6 +49,7 @@
 #  index_users_on_deleted_at            (deleted_at)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_groups_id             (groups_id)
+#  index_users_on_plan_id               (plan_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_slug                  (slug) UNIQUE
 #  index_users_on_username              (username) UNIQUE
