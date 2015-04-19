@@ -57,8 +57,14 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
+  enum role: [:user, :vip, :admin]
   friendly_id :username, use: :slugged
+  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_plan, :if => :new_record?
+  # after_create :sign_up_for_mailing_list
+
   belongs_to :plan
+  validates_associated :plan
   has_many :groups
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -81,6 +87,30 @@ class User < ActiveRecord::Base
   attachment :image
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+
+  def set_default_role
+    self.role ||= :user
+  end
+
+  def set_default_plan
+    self.plan ||= Plan.last
+  end
+
+  def sign_up_for_mailing_list
+    MailingListSignupJob.perform_later(self)
+  end
+
+  def subscribe
+    mailchimp = Gibbon::API.new(Rails.application.secrets.mailchimp_api_key)
+    result = mailchimp.lists.subscribe({
+      :id => Rails.application.secrets.mailchimp_list_id,
+      :email => {:email => self.email},
+      :double_optin => false,
+      :update_existing => true,
+      :send_welcome => true
+    })
+    Rails.logger.info("Subscribed #{self.email} to MailChimp") if result
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
