@@ -1,13 +1,16 @@
-<div class="footer">
-  <div class="col-md-3 col-centered">
-    <hr>
+<% if yield(:page_type) != 'path-type' %>
+
+  <div class="footer">
+    <div class="col-md-3 col-centered">
+      <hr>
+    </div>
+
+    <ul class="list-inline text-center">
+      <li><%= link_to 'Help and Contact Us', contact_path %></li>
+      <li><%= link_to 'Terms of Service', terms_path %></li>
+      <li><%= link_to 'Privacy Policy', privacy_path %></li>
+      <li><%= link_to 'Submissions and Disclosure Policy', submission_path %></li>
+    </ul>
   </div>
 
-  <ul class="list-inline text-center">
-    <li><%= link_to 'Help and Contact Us', contact_path %></li>
-    <li><%= link_to 'Terms of Service', terms_path %></li>
-    <li><%= link_to 'Privacy Policy', privacy_path %></li>
-    <li><%= link_to 'Submissions and Disclosure Policy', submission_path %></li>
-  </ul>
-</div>
-
+<% end %>
