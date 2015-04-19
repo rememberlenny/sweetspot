@@ -14,8 +14,6 @@ class StoriesController < ApplicationController
 
   end
 
-
-
   def featured_stories
     @featured_stories = Story.where(featured_story: true)
   end
@@ -190,7 +188,7 @@ private
 
   # Finds non-trashed widget by `params[:id]`
   def find_story
-    @story = Story.live.find(params[:id])
+    @story = Story.friendly.find(params[:id])
     @film = @story.films.new
     @films = @story.films.all
   end
@@ -201,6 +199,6 @@ private
   end
 
   def story_params
-    params.require(:story).permit(:user_id, :name, :first_slide, :blurb, :byline, :image, :image_cache_id, :remove_image, :image_id)
+    params.require(:story).permit(:slug, :user_id, :name, :first_slide, :blurb, :byline, :image, :image_cache_id, :remove_image, :image_id)
   end
 end
