@@ -6,9 +6,7 @@ class UsersController < ApplicationController
   # GET /users/:id.:format
   def show
     # authorize! :read, @user
-    if user_signed_in?
-      @user = User.find_by uid: params[:id]
-    end
+    @user = User.friendly.find(params[:id])
   end
 
   def dash
