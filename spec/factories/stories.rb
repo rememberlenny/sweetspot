@@ -8,14 +8,14 @@
 #  updated_at     :datetime         not null
 #  byline         :text
 #  blurb          :text
+#  first_slide    :integer
 #  deleted_at     :datetime
 #  groups_id      :integer
-#  first_slide    :integer
 #  draft_id       :integer
 #  published_at   :datetime
 #  trashed_at     :datetime
 #  user_id        :integer
-#  featured_story :boolean
+#  featured_story :boolean          default(FALSE)
 #  image_id       :string
 #
 # Indexes

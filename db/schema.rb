@@ -77,18 +77,18 @@ ActiveRecord::Schema.define(version: 20150418031154) do
 
   create_table "stories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "byline"
     t.text     "blurb"
+    t.integer  "first_slide"
     t.datetime "deleted_at"
     t.integer  "groups_id"
-    t.integer  "first_slide"
     t.integer  "draft_id"
     t.datetime "published_at"
     t.datetime "trashed_at"
     t.integer  "user_id"
-    t.boolean  "featured_story"
+    t.boolean  "featured_story", default: false
     t.string   "image_id"
   end
 
