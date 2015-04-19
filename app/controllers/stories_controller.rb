@@ -173,7 +173,7 @@ class StoriesController < ApplicationController
 private
 
   def find_story_user_access
-    @story = Story.live.find(params[:id])
+    @story = Story.friendly.find(params[:id])
     @film = @story.films.new
     @films = @story.films.all
 
