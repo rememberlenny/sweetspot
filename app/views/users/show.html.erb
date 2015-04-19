@@ -1,9 +1,12 @@
-<div class="user-info">
-  <%= image_tag attachment_url(@user, :image), :class => 'image-target' %>
-  <%= @user.username %>
-  <%= @user.name_last %>
-  <%= @user.name_first %>
-</div>
+  <div class="col-md-2 col-centered">
+    <div class="user-info text-center">
+      <%= image_tag attachment_url(@user, :image), :class => 'image-target' %>
+
+      <h1>@<%= @user.username %></h1>
+    </div>
+  </div>
+</div><!-- .container -->
 <div class="story-container">
-  <%= render 'stories/index' %>
+  <%= render 'stories/featured_stories' %>
 </div>
+<div class="container">
