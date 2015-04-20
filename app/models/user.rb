@@ -57,7 +57,7 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
-  enum role: [:user, :vip, :admin]
+  enum role: [:user, :basic, :pro, :organization, :admin]
   friendly_id :username, use: :slugged
   after_initialize :set_default_role, :if => :new_record?
   after_initialize :set_default_plan, :if => :new_record?
