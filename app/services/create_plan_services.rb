@@ -1,4 +1,4 @@
-class CreatePlanService
+class CreatePlanServices
   def call
     p1 = Plan.where(name: 'Organization').first_or_initialize do |p|
       p.amount = 15
