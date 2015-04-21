@@ -15,6 +15,7 @@ gem "mini_magick"
 gem "friendly_id"
 gem "cells"
 gem "gritter"
+gem 'intercom-rails'
 gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
 gem "aws-sdk", '< 2'
 gem 'rollbar', '~> 1.4.4'
