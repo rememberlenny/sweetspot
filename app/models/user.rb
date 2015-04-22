@@ -42,6 +42,7 @@
 #  pay_date_end           :date
 #  slug                   :string
 #  plan_id                :integer
+#  role                   :integer
 #
 # Indexes
 #
