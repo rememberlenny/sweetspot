@@ -73,7 +73,7 @@ class StoriesController < ApplicationController
   end
 
   def show_json story_id
-    story = Story.find(story_id)
+    story = Story.friendly.find(story_id)
     photos = story.films.all
     jphoto = []
 

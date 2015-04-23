@@ -24,7 +24,7 @@ class FilmsController < ApplicationController
   # POST /films
   # POST /films.json
   def create
-    @story = Story.find(params[:story_id])
+    @story = Story.friendly.find(params[:story_id])
     @film = @story.films.new(film_params)
 
     respond_to do |format|
@@ -66,7 +66,7 @@ class FilmsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def force_story_path
-      @story = Story.find(params[:story_id])
+      @story = Story.friendly.find(params[:story_id])
       if current_user.nil? || @story.user_id != current_user.id
         redirect_to story_path(@story)
       else
@@ -75,11 +75,11 @@ class FilmsController < ApplicationController
     end
 
     def set_film
-      @story = Story.find(params[:story_id])
+      @story = Story.friendly.find(params[:story_id])
       if @story.user_id != current_user.id
         redirect_to story_path
       end
-      @film = Film.find(params[:id])
+      @film = @story.films.find(params[:id])
       @hotspot = @film.hotspots.new
       @hotspots = @film.hotspots.all
     end
