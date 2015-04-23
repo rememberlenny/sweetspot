@@ -1,5 +1,16 @@
 class RegistrationsController < Devise::RegistrationsController
   include Payola::StatusBehavior
+  before_action :cancel_subscription, only: [:destroy]
+
+  def new
+    build_resource({})
+    unless params[:plan].nil?
+      @plan = Plan.find_by!(stripe_id: params[:plan])
+      resource.plan = @plan
+    end
+    yield resource if block_given?
+    respond_with self.resource
+  end
 
   def create
     build_resource(sign_up_params)
@@ -25,30 +36,19 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # PUT /resource
-  # We need to use a copy of the resource because we don't want to change
-  # the current user in place.
-  def update
-    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-        params[:user].delete(:password)
-        params[:user].delete(:password_confirmation)
-    end
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-
-    resource_updated = update_resource(resource, account_update_params)
-    yield resource if block_given?
-    if resource_updated
-      if is_flashing_format?
-        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-          :update_needs_confirmation : :updated
-        set_flash_message :notice, flash_key
+  def change_plan
+    plan = Plan.find_by!(id: params[:user][:plan_id].to_i)
+    unless plan == current_user.plan
+      role = User.roles[plan.stripe_id]
+      if current_user.update_attributes!(plan: plan, role: role)
+        subscription = Payola::Subscription.find_by!(email: current_user.email)
+        Payola::ChangeSubscriptionPlan.call(subscription, plan)
+        redirect_to edit_user_registration_path, :notice => "Plan changed."
+      else
+        flash[:alert] = 'Unable to change plan.'
+        build_resource
+        render :edit
       end
-      sign_in resource_name, resource, bypass: true
-      respond_with resource, location: edit_user_registration_path
-    else
-      clean_up_passwords resource
-      respond_with resource
     end
   end
 
@@ -63,13 +63,13 @@ class RegistrationsController < Devise::RegistrationsController
     return if resource.admin?
     params[:plan] = current_user.plan
     subscription = Payola::CreateSubscription.call(params, current_user)
+    current_user.save
     render_payola_status(subscription)
   end
 
-  protected
-
-    def update_resource(resource, params)
-      @user.update_attributes(account_update_params)
-    end
+  def cancel_subscription
+    subscription = Payola::Subscription.find_by!(email: current_user.email)
+    Payola::CancelSubscription.call(subscription)
+  end
 
 end
