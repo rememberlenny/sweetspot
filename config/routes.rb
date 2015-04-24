@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "omniauth_callbacks",
     :registrations => 'registrations'
   }
+  get 'users',      to: 'users#index', as: :users
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   root to: "static_pages#home"
