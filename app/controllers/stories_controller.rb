@@ -144,11 +144,12 @@ class StoriesController < ApplicationController
   end
 
   def create
+
     @story = Story.new(story_params)
     @story.user_id = current_user.id
     if @story.draft_creation
       flash[:success] = 'A draft of the new story was saved successfully.'
-      redirect_to story_path(@story)
+      redirect_to edit_story_path(@story)
     else
       flash[:error] = 'There was an error creating the story. Please review the errors below and try again.'
       render :new
