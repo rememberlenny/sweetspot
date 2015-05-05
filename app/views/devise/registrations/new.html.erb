@@ -14,10 +14,7 @@
       <br />
       <br />
     </div>
-    <div class="form-group">
-      <%= f.label 'Subscription plan' %>
-      <%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
-    </div>
+
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, :autofocus => true, class: 'form-control', data: { payola: 'email' }  %>
@@ -30,20 +27,7 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
     </div>
-    <div class="form-group">
-      <%= label_tag :card_number, "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, name: nil, class: 'form-control', data: { stripe: 'number' } %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :card_code, "Card Security Code" %>
-      <%= text_field_tag :card_code, nil, name: nil, class: 'form-control', data: { stripe: 'cvc' } %>
-    </div>
-    <br />
-    <div class="form-group">
-      <%= label_tag :card_month, "Card Expiry" %>
-      <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: { stripe: 'exp-month' } } %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: { stripe: 'exp-year' } } %>
-    </div>
+
     <%= f.submit 'Sign up', :class => 'button right' %>
   <% end %>
 </div>
