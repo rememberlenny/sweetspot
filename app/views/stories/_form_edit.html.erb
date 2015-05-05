@@ -1,8 +1,8 @@
 <%= form_for(@story) do |f| %>
 
-  <%= f.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
+  <h4>> Edit Story</h4>
 
-  <div class="">
+  <div class="hidden">
     <% if @story.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
@@ -16,14 +16,20 @@
     <% end %>
 
     <div class="field">
+      <%= f.label :slug %>
       <%= f.text_field :slug, :class => 'form-control title', :placeholder => 'Untitled Slug' %>
     </div>
     <div class="field">
+      <%= f.label :name %>
       <%= f.text_field :name, :class => 'form-control title', :placeholder => 'Untitled Story' %>
     </div>
     <div class="field">
+      <%= f.label :byline %>
       <%= f.text_area :byline, :class => 'form-control', :placeholder => 'Add a subtitle' %>
     </div>
+
+    <%= f.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
   </div>
+
 
 <% end %>
