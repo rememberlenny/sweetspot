@@ -31,8 +31,8 @@ class Story < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   validates :name, presence: true
-  validates :byline, presence: true
-  validates :image, presence: true
+  # validates :byline, presence: true
+  # validates :image, presence: true
   has_drafts
   attachment :image
   has_many :films

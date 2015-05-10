@@ -29,7 +29,7 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to @story, notice: 'Film was successfully created.' }
+        format.html { redirect_to edit_story_path, notice: 'Film was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
         format.html { render :new }

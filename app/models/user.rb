@@ -41,6 +41,8 @@
 #  pay_date_start         :date
 #  pay_date_end           :date
 #  slug                   :string
+#  plan_id                :integer
+#  role                   :integer
 #
 # Indexes
 #
@@ -48,6 +50,7 @@
 #  index_users_on_deleted_at            (deleted_at)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_groups_id             (groups_id)
+#  index_users_on_plan_id               (plan_id)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_slug                  (slug) UNIQUE
 #  index_users_on_username              (username) UNIQUE
@@ -55,14 +58,20 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
+  enum role: [:user, :basic, :pro, :organization, :admin]
   friendly_id :username, use: :slugged
+  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_plan, :if => :new_record?
+  # after_create :sign_up_for_mailing_list
 
+  belongs_to :plan
+  validates_associated :plan
   has_many :groups
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :username, length: { maximum: 18 },
+  validates :username, length: { maximum: 25 },
                     uniqueness: { case_sensitive: false }
   # acts_as_paranoid
   # Include default devise modules. Others available are:
@@ -79,6 +88,49 @@ class User < ActiveRecord::Base
   attachment :image
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+
+  def self.generate_username
+    @username = SecureRandom.hex(10)
+    checked = User.check_is_unique(@username)
+    if checked == true
+      return @username
+    else
+      User.generate_username
+    end
+  end
+
+  def self.check_is_unique username
+    is_user = User.where(username: username)
+    if is_user.count == 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def set_default_role
+    self.role ||= :user
+  end
+
+  def set_default_plan
+    self.plan ||= Plan.last
+  end
+
+  def sign_up_for_mailing_list
+    MailingListSignupJob.perform_later(self)
+  end
+
+  def subscribe
+    mailchimp = Gibbon::API.new(Rails.application.secrets.mailchimp_api_key)
+    result = mailchimp.lists.subscribe({
+      :id => Rails.application.secrets.mailchimp_list_id,
+      :email => {:email => self.email},
+      :double_optin => false,
+      :update_existing => true,
+      :send_welcome => true
+    })
+    Rails.logger.info("Subscribed #{self.email} to MailChimp") if result
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

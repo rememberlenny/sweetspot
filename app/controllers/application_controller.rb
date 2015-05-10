@@ -10,6 +10,21 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  def after_sign_in_path_for(resource)
+    case current_user.role
+      when 'admin'
+        users_path
+      when 1
+        root_path
+      when 1
+        root_path
+      when 1
+        root_path
+      else
+        root_path
+    end
+  end
+
   protected
 
   def configure_devise_permitted_parameters

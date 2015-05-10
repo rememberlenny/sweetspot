@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Payola::Engine => '/payola', as: :payola
   get 'about_process',    to: 'onboard#about_process'
   get 'setup_story',      to: 'stories#new'
   get 'register_account', to: 'users/registrations#new'
@@ -11,7 +12,8 @@ Rails.application.routes.draw do
 
   match '/@:id' => 'users#show', via: [:get], as: :user_profile
 
-  get 'pricing',    to: 'static_pages#pricing'
+  get 'pricing',    to: 'static_pages#free'
+  # get 'pricing',    to: 'static_pages#pricing'
   get 'contact',    to: 'static_pages#contact'
   get 'terms',      to: 'static_pages#terms'
   get 'privacy',    to: 'static_pages#privacy'
@@ -22,8 +24,9 @@ Rails.application.routes.draw do
   match 'dash',                 to: 'users#dash',       via: [:get], as: :dash
   devise_for :users, :controllers => {
     :omniauth_callbacks => "omniauth_callbacks",
-    registrations: 'users/registrations'
+    :registrations => 'registrations'
   }
+  get 'users',      to: 'users#index', as: :users
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   root to: "static_pages#home"

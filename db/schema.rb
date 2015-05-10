@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419013246) do
+ActiveRecord::Schema.define(version: 20150422135219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,113 @@ ActiveRecord::Schema.define(version: 20150419013246) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
+  create_table "payola_affiliates", force: :cascade do |t|
+    t.string   "code"
+    t.string   "email"
+    t.integer  "percent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payola_coupons", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "percent_off"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "active",      default: true
+  end
+
+  create_table "payola_sales", force: :cascade do |t|
+    t.string   "email"
+    t.string   "guid"
+    t.integer  "product_id"
+    t.string   "product_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "state"
+    t.string   "stripe_id"
+    t.string   "stripe_token"
+    t.string   "card_last4"
+    t.date     "card_expiration"
+    t.string   "card_type"
+    t.text     "error"
+    t.integer  "amount"
+    t.integer  "fee_amount"
+    t.integer  "coupon_id"
+    t.boolean  "opt_in"
+    t.integer  "download_count"
+    t.integer  "affiliate_id"
+    t.text     "customer_address"
+    t.text     "business_address"
+    t.string   "stripe_customer_id"
+    t.string   "currency"
+    t.text     "signed_custom_fields"
+    t.integer  "owner_id"
+    t.string   "owner_type"
+  end
+
+  add_index "payola_sales", ["coupon_id"], name: "index_payola_sales_on_coupon_id", using: :btree
+  add_index "payola_sales", ["email"], name: "index_payola_sales_on_email", using: :btree
+  add_index "payola_sales", ["guid"], name: "index_payola_sales_on_guid", using: :btree
+  add_index "payola_sales", ["owner_id", "owner_type"], name: "index_payola_sales_on_owner_id_and_owner_type", using: :btree
+  add_index "payola_sales", ["product_id", "product_type"], name: "index_payola_sales_on_product", using: :btree
+  add_index "payola_sales", ["stripe_customer_id"], name: "index_payola_sales_on_stripe_customer_id", using: :btree
+
+  create_table "payola_stripe_webhooks", force: :cascade do |t|
+    t.string   "stripe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payola_subscriptions", force: :cascade do |t|
+    t.string   "plan_type"
+    t.integer  "plan_id"
+    t.datetime "start"
+    t.string   "status"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "stripe_customer_id"
+    t.boolean  "cancel_at_period_end"
+    t.datetime "current_period_start"
+    t.datetime "current_period_end"
+    t.datetime "ended_at"
+    t.datetime "trial_start"
+    t.datetime "trial_end"
+    t.datetime "canceled_at"
+    t.integer  "quantity"
+    t.string   "stripe_id"
+    t.string   "stripe_token"
+    t.string   "card_last4"
+    t.date     "card_expiration"
+    t.string   "card_type"
+    t.text     "error"
+    t.string   "state"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "currency"
+    t.integer  "amount"
+    t.string   "guid"
+    t.string   "stripe_status"
+    t.integer  "affiliate_id"
+    t.string   "coupon"
+    t.text     "signed_custom_fields"
+    t.text     "customer_address"
+    t.text     "business_address"
+    t.integer  "setup_fee"
+  end
+
+  add_index "payola_subscriptions", ["guid"], name: "index_payola_subscriptions_on_guid", using: :btree
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "stripe_id"
+    t.string   "interval"
+    t.integer  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                     null: false
@@ -149,15 +256,19 @@ ActiveRecord::Schema.define(version: 20150419013246) do
     t.date     "pay_date_start"
     t.date     "pay_date_end"
     t.string   "slug"
+    t.integer  "plan_id"
+    t.integer  "role"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["groups_id"], name: "index_users_on_groups_id", using: :btree
+  add_index "users", ["plan_id"], name: "index_users_on_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
+  add_foreign_key "users", "plans"
 end
