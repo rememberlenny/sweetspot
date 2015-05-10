@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   # GET /users/:id.:format
   def show
     # authorize! :read, @user
-    @user = User.friendly.find(params[:id])
+    @user = User.find(params[:id])
     if @user.nil?
       redirect_to root_path
     else
@@ -20,9 +20,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def dash
-    @stories = Story.live.includes(:draft).order('updated_at DESC')
-  end
 
   # GET /users/:id/edit
   def edit
