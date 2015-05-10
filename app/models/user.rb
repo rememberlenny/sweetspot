@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :username, length: { maximum: 18 },
+  validates :username, length: { maximum: 25 },
                     uniqueness: { case_sensitive: false }
   # acts_as_paranoid
   # Include default devise modules. Others available are:
@@ -88,6 +88,25 @@ class User < ActiveRecord::Base
   attachment :image
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+
+  def self.generate_username
+    @username = SecureRandom.hex(10)
+    checked = User.check_is_unique(@username)
+    if checked == true
+      return @username
+    else
+      User.generate_username
+    end
+  end
+
+  def self.check_is_unique username
+    is_user = User.where(username: username)
+    if is_user.count == 0
+      return true
+    else
+      return false
+    end
+  end
 
   def set_default_role
     self.role ||= :user

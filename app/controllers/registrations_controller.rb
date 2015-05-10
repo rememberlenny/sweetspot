@@ -16,19 +16,21 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     # plan = Plan.find_by!(id: params[:user][:plan_id].to_i)
     # resource.role = User.roles[plan.stripe_id] unless resource.admin?
-    plan = 'basic'
-    resource.role = 'basic'
+    plan = 'SWTSPT-Basic'
+    resource.role = 1
+    @username = User.generate_username
+    resource.username = @username
     resource.save
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_flashing_format?
         sign_up(resource_name, resource)
-        subscribe
+        # subscribe
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
-        subscribe
+        # subscribe
       end
     else
       clean_up_passwords resource
@@ -36,6 +38,7 @@ class RegistrationsController < Devise::RegistrationsController
         {error: resource.errors.full_messages.to_sentence},
         status: 400
     end
+    redirect_to root_path
   end
 
   def change_plan

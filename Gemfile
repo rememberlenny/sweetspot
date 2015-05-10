@@ -46,7 +46,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
 end
 
 

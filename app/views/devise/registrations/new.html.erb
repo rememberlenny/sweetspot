@@ -8,11 +8,7 @@
     </div>
     <div class="panel-body">
       <div class="authform">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form',
-              :class => 'payola-onestep-subscription-form',
-              'data-payola-base-path' => payola_path,
-              'data-payola-plan-type' => resource.plan.plan_class,
-              'data-payola-plan-id' => resource.plan.id}) do |f| %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form' }) do |f| %>
           <div>
             <span id="error_explanation" class="payola-payment-error"></span>
           </div>
