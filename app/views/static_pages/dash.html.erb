@@ -1,7 +1,11 @@
-<%= render 'stories/create_block'%>
-
+<% if !@stories.count == 0 %>
+  <%= render 'stories/create_block'%>
+<% end %>
 </div><!-- .container -->
 <div class="clearfix"></div>
+<% if @stories.count == 0 %>
+  <%= render 'stories/no_stories' %>
+<% end %>
 <div class="black-bg">
   <% @stories.each do |story| %>
     <div class="col-md-6 text-center story-container">
