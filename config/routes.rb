@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   match '/@:id' => 'users#show', via: [:get], as: :user_profile
 
-  get 'pricing',    to: 'static_pages#pricing'
+  get 'pricing',    to: 'static_pages#free'
+  # get 'pricing',    to: 'static_pages#pricing'
   get 'contact',    to: 'static_pages#contact'
   get 'terms',      to: 'static_pages#terms'
   get 'privacy',    to: 'static_pages#privacy'
