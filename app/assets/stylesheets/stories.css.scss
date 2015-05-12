@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.dropzone-box{
+    height: 300px;
+    border: 4px solid rgb(51, 51, 51);
+}
+
 .black-bg{
     background: black;
 }

@@ -1,18 +1,31 @@
-<h1>Editing <%= @story.name %></h1>
+<% if @films.count == 0 %>
+  <%= form_for @story do |form| %>
+    <%= form.fields_for :films, { :multiple => true } do |p| %>
+      <div class="field">
+        <%= p.label :image %><br>
+        <%= p.file_field :image, :multiple => true, name: "story_films[image]" %>
+      </div>
+    <% end %>
 
-<div class="row">
-  <div class="col-md-4">
-    <h1>New Photo</h1>
-    <%= render 'films/form' %>
-    <hr>
-    <%= render 'form_photo' %>
-    <%= render 'form_edit' %>
-  </div>
-  <div class="col-md-8">
-    <h1>Uploaded Photos</h1>
-    <%= render 'films/index' %>
-  </div>
-</div>
+    <%= form.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
+  <% end %>
 
-<%= link_to 'Show', @story %> |
-<%= link_to 'Back', stories_path %>
+<% else %>
+  <h1>Editing <%= @story.name %></h1>
+  <div class="row">
+    <div class="col-md-4">
+      <h1>New Photo</h1>
+      <%= render 'films/form' %>
+      <hr>
+      <%= render 'form_photo' %>
+      <%= render 'form_edit' %>
+    </div>
+    <div class="col-md-8">
+      <h1>Uploaded Photos</h1>
+      <%= render 'films/index' %>
+    </div>
+  </div>
+  <%= link_to 'Show', @story %> |
+  <%= link_to 'Back', stories_path %>
+<% end %>
+

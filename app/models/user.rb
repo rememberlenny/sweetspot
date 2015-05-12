@@ -85,8 +85,6 @@ class User < ActiveRecord::Base
     :confirmable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attachment :image
-
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   def self.generate_username

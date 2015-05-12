@@ -157,9 +157,13 @@ class StoriesController < ApplicationController
   end
 
   def update
-
-    @story.update(story_params)
-    @story.attributes = story_params
+    params[:story_films].inspect
+    byebug
+    params[:story_films].each{ |image|
+      @film = @story.films.create(image: image[1])
+      @film.save
+    }
+    # @story.attributes = story_params
     # respond_with(@story)
     redirect_to edit_story_path(@story)
   end
@@ -200,6 +204,10 @@ private
   end
 
   def story_params
-    params.require(:story).permit(:slug, :user_id, :name, :first_slide, :blurb, :byline, :image, :image_cache_id, :remove_image, :image_id)
+    params.require(:story).permit!
+    # params.require(:story).permit(
+    #   :slug, :user_id, :name, :first_slide,
+    #   :blurb, :byline, :image, :image_cache_id,
+    #   :remove_image, :image_id, films_images: [])
   end
 end

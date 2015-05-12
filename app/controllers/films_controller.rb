@@ -29,8 +29,8 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to edit_story_path, notice: 'Film was successfully created.' }
-        format.json { render :show, status: :created, location: @story }
+        format.html { redirect_to edit_story_path(@story), notice: 'Film was successfully created.' }
+        format.json{ render :json => @film }
       else
         format.html { render :new }
         format.json { render json: @film.errors, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class FilmsController < ApplicationController
   def destroy
     @film.destroy
     respond_to do |format|
-      format.html { redirect_to films_url, notice: 'Film was successfully destroyed.' }
+      format.html { redirect_to edit_story_url(@story), notice: 'Film was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

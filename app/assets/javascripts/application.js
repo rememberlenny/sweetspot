@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require refile
+//= require bootstrap
 //= require vendor/underscore-min
 //= require vendor/backbone-min
 //= require path/router

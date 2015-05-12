@@ -11,13 +11,16 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'annotate'
-gem "mini_magick"
 gem "friendly_id"
 gem "cells"
 gem "gritter"
 gem 'intercom-rails'
-gem 'refile', '~> 0.4.2', require: ["refile/rails", "refile/image_processing"]
-gem "aws-sdk", '< 2'
+gem "mini_magick"
+gem "mini_magick"
+gem "refile", require: "refile/rails", :git => 'https://github.com/refile/refile.git', :branch => 'master'
+gem "refile-mini_magick", :git => 'https://github.com/refile/refile-mini_magick.git', :branch => 'master'
+gem "refile-s3", :git => 'https://github.com/refile/refile-s3.git', :branch => 'master'
+gem "aws-sdk"
 gem 'rollbar', '~> 1.4.4'
 gem "paranoia", "~> 2.0"
 gem 'paper_trail', '~> 4.0.0.beta'
