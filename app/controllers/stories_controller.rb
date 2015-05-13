@@ -108,7 +108,7 @@ class StoriesController < ApplicationController
     end
 
     if !attachment_url(story, :image).nil?
-      featured_image_url = attachment_url(story, :image) + '.jpeg'
+      # featured_image_url = attachment_url(story, :image) + '.jpeg'
     end
     json = {
       story: {
@@ -117,7 +117,7 @@ class StoriesController < ApplicationController
         updated_at: story.updated_at,
         blurb: story.blurb,
         byline: story.byline,
-        featured: featured_image_url,
+        # featured: featured_image_url,
         first_slide: story.first_slide.to_i
       },
       photos: jphoto
