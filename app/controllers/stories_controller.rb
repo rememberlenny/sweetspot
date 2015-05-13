@@ -107,9 +107,9 @@ class StoriesController < ApplicationController
       }
     end
 
-    if !attachment_url(story, :image).nil?
+    # if !attachment_url(story, :image).nil?
       # featured_image_url = attachment_url(story, :image) + '.jpeg'
-    end
+    # end
     json = {
       story: {
         name: story.name,
