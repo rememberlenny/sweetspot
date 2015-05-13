@@ -9,7 +9,7 @@
   <% @stories.each do |story| %>
     <div class="col-md-6 text-center story-container">
       <% if story.image_id != nil %>
-      <% attachment_image = attachment_url(story, :image, :fill, 570, 300) %>
+      <% #attachment_image = attachment_url(story, :image, :fill, 570, 300) %>
       <% else %>
       <% attachment_image = '' %>
       <% end %>
