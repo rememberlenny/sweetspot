@@ -1,15 +1,9 @@
 <% if @films.count == 0 %>
   <%= form_for @story do |form| %>
-    <%= form.fields_for :films, { :multiple => true } do |p| %>
-      <div class="field">
-        <%= p.label :image %><br>
-        <%= p.file_field :image, :multiple => true, name: "story_films[image]" %>
-      </div>
-    <% end %>
-
+    <%= form.label :images_files %>
+    <%= form.attachment_field :films_images[], multiple: true, direct: true, presigned: true %>
     <%= form.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
   <% end %>
-
 <% else %>
   <h1>Editing <%= @story.name %></h1>
   <div class="row">

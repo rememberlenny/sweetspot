@@ -157,11 +157,13 @@ class StoriesController < ApplicationController
   end
 
   def update
-    params[:story_films].inspect
-    byebug
-    params[:story_films].each{ |image|
-      @film = @story.films.create(image: image[1])
-      @film.save
+
+    # byebug
+    params[:story][:films_images].each{ |image|
+      if image != '[]'
+        @film = @story.films.create(image: image)
+        @film.save
+      end
     }
     # @story.attributes = story_params
     # respond_with(@story)

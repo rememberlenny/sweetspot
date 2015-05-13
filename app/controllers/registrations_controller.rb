@@ -32,13 +32,13 @@ class RegistrationsController < Devise::RegistrationsController
         expire_data_after_sign_in!
         # subscribe
       end
+      redirect_to root_path
     else
       clean_up_passwords resource
       render json:
         {error: resource.errors.full_messages.to_sentence},
         status: 400
     end
-    redirect_to root_path
   end
 
   def change_plan

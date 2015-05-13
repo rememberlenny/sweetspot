@@ -19,7 +19,7 @@
 
 class Film < ActiveRecord::Base
   # acts_as_paranoid
-  attachment :image
   belongs_to :story
+  attachment :image
   has_many :hotspots
 end
