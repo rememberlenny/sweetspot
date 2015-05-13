@@ -206,10 +206,9 @@ private
   end
 
   def story_params
-    params.require(:story).permit!
-    # params.require(:story).permit(
-    #   :slug, :user_id, :name, :first_slide,
-    #   :blurb, :byline, :image, :image_cache_id,
-    #   :remove_image, :image_id, films_images: [])
+    # params.require(:story).permit!
+    params.require(:story).permit(
+      :slug, :user_id, :name,
+      :blurb, :byline, films_images: [])
   end
 end

@@ -1,7 +1,7 @@
 <% if @films.count == 0 %>
   <%= form_for @story do |form| %>
     <%= form.label :images_files %>
-    <%= form.attachment_field :films_images[], multiple: true, direct: true, presigned: true %>
+    <%= form.attachment_field :films_images, multiple: true, direct: true, presigned: true %>
     <%= form.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
   <% end %>
 <% else %>
