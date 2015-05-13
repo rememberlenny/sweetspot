@@ -159,11 +159,13 @@ class StoriesController < ApplicationController
   def update
 
     # byebug
+    i = 0
     params[:story][:films_images].each{ |image|
-      if image != '[]'
+      if i != 0
         @film = @story.films.create(image: image)
         @film.save
       end
+      i = 1 + i
     }
     # @story.attributes = story_params
     # respond_with(@story)

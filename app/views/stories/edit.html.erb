@@ -9,10 +9,11 @@
   <div class="row">
     <div class="col-md-4">
       <h1>New Photo</h1>
-      <%= render 'films/form' %>
-      <hr>
-      <%= render 'form_photo' %>
-      <%= render 'form_edit' %>
+        <%= form_for @story do |form| %>
+          <%= form.label :images_files %>
+          <%= form.attachment_field :films_images, multiple: true, direct: true, presigned: true %>
+          <%= form.submit :class => 'btn btn-primary btn-lg submit-fixed-button' %>
+        <% end %>
     </div>
     <div class="col-md-8">
       <h1>Uploaded Photos</h1>
